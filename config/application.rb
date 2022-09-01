@@ -18,5 +18,11 @@ module TripLog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.assets false # CSS, JavaScriptファイル生成せず
+      g.helper false # ヘルパーを作らない
+      g.jbuilder false # JSON をこねくりまわすシンプルなDSL らしい
+      g.test_framework false # specは作らない
+    end
   end
 end
