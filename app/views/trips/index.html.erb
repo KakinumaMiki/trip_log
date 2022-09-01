@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Trips</h1>
+<h1>Trips（TOP画面）</h1>
 
 <table>
   <thead>
@@ -25,3 +25,4 @@
 <br>
 
 <%= link_to 'New Trip', new_trip_path %>
+<%= link_to '県の詳細', trip_places_path(1) %>

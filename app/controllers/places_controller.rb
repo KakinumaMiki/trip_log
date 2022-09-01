@@ -12,6 +12,7 @@ class PlacesController < ApplicationController
 
   # GET /places/new
   def new
+    # @trip = Trip.find(params[:trip_id])
     @place = Place.new
   end
 

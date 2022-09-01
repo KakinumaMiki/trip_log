@@ -27,7 +27,7 @@
         <td><%= place.comment %></td>
         <td><%= place.star %></td>
         <td><%= link_to 'Show', place %></td>
-        <td><%= link_to 'Edit', edit_place_path(place) %></td>
+        <td><%= link_to 'Edit', edit_trip_place_path(place) %></td>
         <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -36,4 +36,5 @@
 
 <br>
 
-<%= link_to 'New Place', new_place_path %>
+<%= link_to 'New Place', new_trip_place_path %>
+<%= link_to 'TOP画面に戻る', trips_path %>
