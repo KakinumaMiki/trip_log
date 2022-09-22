@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :trips
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root :to => 'trips#index'
-  resources :trips, only: [:index] do
-    resources :places
+  root :to => 'prefectures#index'
+  resources :prefectures, only: [:index] do
+    scope module: :prefectures do
+      resources :places
+    end
   end
 end

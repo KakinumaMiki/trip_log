@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_01_050031) do
+ActiveRecord::Schema.define(version: 2022_09_22_094410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,25 +23,24 @@ ActiveRecord::Schema.define(version: 2022_09_01_050031) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.bigint "trip_id", null: false
+    t.bigint "prefecture_id", null: false
     t.bigint "category_id", null: false
     t.string "name"
     t.string "address"
-    t.string "with_who"
-    t.text "comment"
-    t.integer "star"
+    t.boolean "gone"
+    t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_places_on_category_id"
-    t.index ["trip_id"], name: "index_places_on_trip_id"
+    t.index ["prefecture_id"], name: "index_places_on_prefecture_id"
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.string "prefecture"
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "places", "categories"
-  add_foreign_key "places", "trips"
+  add_foreign_key "places", "prefectures"
 end
