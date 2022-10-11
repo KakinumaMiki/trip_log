@@ -11,47 +11,9 @@
   <% end %>
 <% end %>
 
-<div>
-  行ったところ
-<!--    TODO: 行ったところと行きたいところで共通化する-->
-  <ul>
-    <% Category.order(:id).each do |category| %>
-      <li>
-        <%= category.label %>
-        <ul>
-          <% gone_places.each do |place| %>
-            <% if place.category == category %>
-              <li><%= link_to place.name, prefecture_place_path(@prefecture, place) %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-<!--  ここまで-->
-</div>
-
-
-
-<div>
-  行ってみたいところ
-  <ul>
-    <% Category.order(:id).each do |category| %>
-      <li>
-        <%= category.label %>
-        <ul>
-          <% not_gone_places.each do |place| %>
-            <% if place.category == category %>
-              <li><%= link_to place.name, prefecture_place_path(@prefecture, place) %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<%= render 'list', places: gone_places, prefecture: @prefecture, title: '行ったところ' %>
+<%= render 'list', places: not_gone_places, prefecture: @prefecture, title: '行ってみたいところ' %>
 
 
 <%= link_to '場所の追加', new_prefecture_place_path(@prefecture) %>
-
 <%= link_to '戻る', root_path %>

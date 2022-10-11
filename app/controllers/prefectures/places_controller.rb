@@ -1,32 +1,27 @@
 class Prefectures::PlacesController < ApplicationController
+  before_action :set_prefecture
   def index
-    @prefecture = Prefecture.find(params[:prefecture_id])
     @places = @prefecture.places
   end
 
   def show
-    @prefecture = Prefecture.find(params[:prefecture_id])
     @place = @prefecture.places.find(params[:id])
   end
 
   def new
-    @place = Place.new
+    @place = @prefecture.places.new
   end
 
   def edit
   end
 
   def create
-    @place = Place.new(prefecture_params)
+    @place = @prefecture.places.build(place_params)
 
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to prefecture_places_url(@place), notice: "Place was successfully created." }
-        format.json { render :show, status: :created, location: @place }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    if @place.save
+      redirect_to prefecture_places_path(@prefecture), notice: '新規作成されました。'
+    else
+      render :new
     end
   end
 
@@ -53,13 +48,13 @@ class Prefectures::PlacesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_place
-    # @place = Place.find(params[:id])
+
+  def set_prefecture
+    @prefecture = Prefecture.find(params[:prefecture_id])
   end
 
   # Only allow a list of trusted parameters through.
   def place_params
-    # params.require(:prefecture).permit(:name)
+    params.require(:place).permit(:name, :address, :gone, :memo, :category_id)
   end
 end

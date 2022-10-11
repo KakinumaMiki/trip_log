@@ -7,7 +7,9 @@
 <% end %>
 <%= @place.prefecture.name %>
 
+<p>カテゴリー: <%= @place.category.label %></p>
 <p>住所: <%= @place.address %></p>
+<p>メモ: <%= @place.memo %></p>
 
 <div>
   <%= link_to '戻る', prefecture_places_path(@place.prefecture) %>
