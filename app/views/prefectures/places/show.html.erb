@@ -1,3 +1,14 @@
 <h1>場所の詳細</h1>
+<h1><%= @place.name %></h1>
+<% if @place.gone? %>
+  <p>行ったよ！</p>
+<% else %>
+  <p>行きたい！</p>
+<% end %>
+<%= @place.prefecture.name %>
 
-<%= link_to '戻る', prefecture_places_path(1) %>
+<p>住所: <%= @place.address %></p>
+
+<div>
+  <%= link_to '戻る', prefecture_places_path(@place.prefecture) %>
+</div>

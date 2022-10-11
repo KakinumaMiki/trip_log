@@ -1,10 +1,12 @@
 class Prefectures::PlacesController < ApplicationController
   def index
-
+    @prefecture = Prefecture.find(params[:prefecture_id])
+    @places = @prefecture.places
   end
 
   def show
-
+    @prefecture = Prefecture.find(params[:prefecture_id])
+    @place = @prefecture.places.find(params[:id])
   end
 
   def new

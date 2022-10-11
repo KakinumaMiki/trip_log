@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2022_09_22_094410) do
   create_table "places", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
     t.bigint "category_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.string "address"
-    t.boolean "gone"
+    t.boolean "gone", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
