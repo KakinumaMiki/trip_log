@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      place:
+        name: 名称
+        address: 住所
+        gone: ラベル
+        memo: メモ
+        category_id: カテゴリー
+    models:
+      place: 場所
