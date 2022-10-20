@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root :to => 'prefectures#index'
   resources :prefectures, only: [:index] do
     scope module: :prefectures do
-      resources :places
+      resources :places do
+        scope module: :places do
+          resources :memories
+        end
+      end
     end
   end
 end

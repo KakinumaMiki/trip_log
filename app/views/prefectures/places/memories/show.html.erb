@@ -1,0 +1,5 @@
+<h1><%= @place.name %></h1>
+
+<%= render 'prefectures/places/memories/memory_list', memory: @memory %>
+
+<%= link_to '場所の詳細に戻る', prefecture_place_path(@prefecture, @place) %>

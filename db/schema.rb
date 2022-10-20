@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_22_094410) do
+ActiveRecord::Schema.define(version: 2022_10_17_094535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2022_09_22_094410) do
     t.integer "priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "memories", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.date "went_on", null: false
+    t.string "with_who"
+    t.text "comment"
+    t.decimal "star", null: false
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_memories_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -41,6 +53,7 @@ ActiveRecord::Schema.define(version: 2022_09_22_094410) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "memories", "places"
   add_foreign_key "places", "categories"
   add_foreign_key "places", "prefectures"
 end
