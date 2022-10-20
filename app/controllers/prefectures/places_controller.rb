@@ -1,11 +1,11 @@
 class Prefectures::PlacesController < ApplicationController
   before_action :set_prefecture
+  before_action :set_place, only: [:show, :edit, :update]
   def index
     @places = @prefecture.places
   end
 
   def show
-    @place = @prefecture.places.find(params[:id])
   end
 
   def new
@@ -26,15 +26,11 @@ class Prefectures::PlacesController < ApplicationController
   end
 
   def update
-    # respond_to do |format|
-    #   if @prefecture.update(prefecture_params)
-    #     format.html { redirect_to prefecture_url(@prefecture), notice: "Prefecture was successfully updated." }
-    #     format.json { render :show, status: :ok, location: @prefecture }
-    #   else
-    #     format.html { render :edit, status: :unprocessable_entity }
-    #     format.json { render json: @prefecture.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    if @place.update(place_params)
+      redirect_to prefecture_place_path(@prefecture, @place), notice: '更新されました。'
+    else
+      render :edit
+    end
   end
 
   # DELETE /prefectures/1 or /prefectures/1.json
@@ -51,6 +47,10 @@ class Prefectures::PlacesController < ApplicationController
 
   def set_prefecture
     @prefecture = Prefecture.find(params[:prefecture_id])
+  end
+
+  def set_place
+    @place = @prefecture.places.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

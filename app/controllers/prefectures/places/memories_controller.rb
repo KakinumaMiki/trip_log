@@ -1,13 +1,16 @@
 class Prefectures::Places::MemoriesController < ApplicationController
   before_action :set_prefecture
   before_action :set_place
+  before_action :set_memory, only: [:show, :edit, :update]
 
   def show
-    @memory = @place.memories.find(params[:id])
   end
 
   def new
     @memory = @place.memories.build
+  end
+
+  def edit
   end
 
   def create
@@ -20,6 +23,14 @@ class Prefectures::Places::MemoriesController < ApplicationController
     end
   end
 
+  def update
+    if @memory.update(memory_params)
+      redirect_to prefecture_place_memory_path(@prefecture, @place, @memory), notice: '更新されました。'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_prefecture
@@ -28,6 +39,10 @@ class Prefectures::Places::MemoriesController < ApplicationController
 
   def set_place
     @place = @prefecture.places.find(params[:place_id])
+  end
+
+  def set_memory
+    @memory = @place.memories.find(params[:id])
   end
 
   def memory_params
