@@ -1,7 +1,7 @@
 class Prefectures::Places::MemoriesController < ApplicationController
   before_action :set_prefecture
   before_action :set_place
-  before_action :set_memory, only: [:show, :edit, :update]
+  before_action :set_memory, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -28,6 +28,15 @@ class Prefectures::Places::MemoriesController < ApplicationController
       redirect_to prefecture_place_memory_path(@prefecture, @place, @memory), notice: '更新されました。'
     else
       render :edit
+    end
+  end
+
+  # TODO: button_to じゃないと削除できなくなってた
+  def destroy
+    if @memory.destroy
+      redirect_to prefecture_place_path(@prefecture, @place), notice: '受検地域を削除しました。'
+    else
+      redirect_to prefecture_place_path(@prefecture, @place), alert: '削除できませんでした。'
     end
   end
 

@@ -34,14 +34,14 @@ class Prefectures::PlacesController < ApplicationController
   end
 
   # DELETE /prefectures/1 or /prefectures/1.json
-  def destroy
-    @place.destroy
-
-    respond_to do |format|
-      format.html { redirect_to prefectures_url, notice: "Prefecture was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   # class Authorities::AreasController < Authorities::BaseController を参考に
+  #   if @place.destroy
+  #     redirect_to prefecture_places_path(@prefecture), notice: '場所を削除しました。'
+  #   else
+  #     redirect_to prefecture_places_path(@prefecture), alert: '削除に失敗しました。'
+  #   end
+  # end
 
   private
 
