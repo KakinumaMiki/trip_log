@@ -1,0 +1,42 @@
+<%= form_with(model: [@prefecture, @place]) do |form| %>
+  <%# if place.errors.any? %>
+  <!--    <div id="error_explanation">-->
+  <!--      <h2><%#= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>-->
+
+  <!--      <ul>-->
+  <%# place.errors.each do |error| %>
+  <!--          <li><%#= error.full_message %></li>-->
+  <%# end %>
+  <!--      </ul>-->
+  <!--    </div>-->
+  <%# end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gone %>
+    <%= form.select :gone, [['行ってみたい', 0], ['行った', 1]], { include_blank: false, selected: 0 } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '作成!' %>
+  </div>
+<% end %>

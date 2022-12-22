@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      memory:
+        went_on: 行った日にち
+        with_who: 誰と
+        comment: コメント
+        star: 評価
+        price: 値段
+    models:
+      memory: 記録

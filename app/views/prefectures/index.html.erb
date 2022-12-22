@@ -1,0 +1,18 @@
+<h1>TOP画面</h1>
+<!--<p id="notice"><%#= notice %></p>-->
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prefectures.each do |prefecture| %>
+      <tr>
+        <td><%= link_to prefecture.name, prefecture_places_path(prefecture) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
