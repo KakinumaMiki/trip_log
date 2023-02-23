@@ -1,6 +1,6 @@
 class Prefectures::PlacesController < ApplicationController
   before_action :set_prefecture
-  before_action :set_place, only: [:show, :edit, :update]
+  before_action :set_place, only: [:show, :edit, :update, :destroy]
   def index
     @places = @prefecture.places
   end
@@ -34,14 +34,13 @@ class Prefectures::PlacesController < ApplicationController
   end
 
   # DELETE /prefectures/1 or /prefectures/1.json
-  # def destroy
-  #   # class Authorities::AreasController < Authorities::BaseController を参考に
-  #   if @place.destroy
-  #     redirect_to prefecture_places_path(@prefecture), notice: '場所を削除しました。'
-  #   else
-  #     redirect_to prefecture_places_path(@prefecture), alert: '削除に失敗しました。'
-  #   end
-  # end
+  def destroy
+    if @place.destroy
+      redirect_to prefecture_places_path(@prefecture), notice: '受検地域を削除しました。'
+    else
+      redirect_to prefecture_places_path(@prefecture), alert: '削除できませんでした。'
+    end
+  end
 
   private
 

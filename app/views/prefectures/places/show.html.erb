@@ -29,6 +29,7 @@
 
 <div>
   <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place) %>
+  <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
 </div>
 
 <div>
