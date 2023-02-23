@@ -4,5 +4,4 @@
 <p>誰と：<%= memory.with_who %></p>
 <p>コメント：<%= memory.comment %></p>
 
-<!--confirm効かない 多分jsがうまく動いてない。同じ理由でlink_toも動かない-->
-<%= button_to '削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
+<%= link_to '削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
