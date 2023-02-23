@@ -1,0 +1,19 @@
+<h1><%= @prefecture.name %></h1>
+
+<% gone_places = [] %>
+<% not_gone_places = [] %>
+
+<% @places.order(:id).each do |place| %>
+  <% if place.gone? %>
+    <% gone_places << place %>
+  <% else %>
+    <% not_gone_places << place %>
+  <% end %>
+<% end %>
+
+<%= render 'list', places: gone_places, prefecture: @prefecture, title: '行ったところ' %>
+<%= render 'list', places: not_gone_places, prefecture: @prefecture, title: '行ってみたいところ' %>
+
+
+<%= link_to '場所の追加', new_prefecture_place_path(@prefecture) %>
+<%= link_to '戻る', root_path %>

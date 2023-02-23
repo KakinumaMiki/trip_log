@@ -1,0 +1,43 @@
+<h1>場所の詳細</h1>
+<h1><%= @place.name %></h1>
+<% if @place.gone? %>
+  <p>行ったよ！</p>
+<% else %>
+  <p>行きたい！</p>
+<% end %>
+<%= @place.prefecture.name %>
+
+<p>カテゴリー: <%= @place.category.label %></p>
+<p>住所: <%= @place.address %></p>
+<p>メモ: <%= @place.memo %></p>
+
+<% memories = @place.memories %>
+<% if memories.size == 1 %>
+  --------------------------------
+  <%= render 'prefectures/places/memories/memory_list', memory: memories.first %>
+<% elsif memories.size > 1 %>
+  <table>
+    <tbody>
+      <% memories.order(went_on: :desc).each do |memory| %>
+        <tr>
+          <td><%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div>
+  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place) %>
+  <% unless @place.memories.present?%>
+    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place) %>
+</div>
+
+<div>
+  <%= link_to '戻る', prefecture_places_path(@place.prefecture) %>
+</div>

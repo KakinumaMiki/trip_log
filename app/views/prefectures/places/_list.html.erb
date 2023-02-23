@@ -1,0 +1,17 @@
+<div>
+  <%= title %>
+  <ul>
+    <% Category.order(:id).each do |category| %>
+      <li>
+        <%= category.label %>
+        <ul>
+          <% places.each do |place| %>
+            <% if place.category == category %>
+              <li><%= link_to place.name, prefecture_place_path(prefecture, place) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

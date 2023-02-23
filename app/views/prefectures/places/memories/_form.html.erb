@@ -1,0 +1,30 @@
+<%= form_with(model: @memory, url: url) do |form| %>
+  <div class="field">
+    <%= form.label :went_on %>
+    <%= form.date_field :went_on, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :star %>
+    <%= form.number_field :star, in:0.0..5.0, step: 0.1, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, min:0 %>円
+  </div>
+
+  <div class="field">
+    <%= form.label :with_who %>
+    <%= form.text_field :with_who %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '作成!' %>
+  </div>
+<% end %>

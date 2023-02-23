@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bundle exec rails db:migrate:reset
+bundle exec rails db:seed_fu
