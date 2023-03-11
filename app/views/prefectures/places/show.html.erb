@@ -1,5 +1,44 @@
 <h1 class="title">場所の詳細</h1>
-<h2 class="subtitle is-4"><%= @place.name %></h2>
+<h2 class="subtitle is-4">
+  <span class="icon">
+  <i class="fas fa-home"></i>
+</span><%= @place.name %></h2>
+
+<h2 class="subtitle is-4">
+  <div class="icon-text">
+    <!--  <span class="icon has-text-info">-->
+    <!--  <span class="icon has-text-success">-->
+    <span class="icon has-text-danger">
+<!--  <span class="icon">-->
+      <!--    <i class="fas fa-2x fa-info-circle"></i>-->
+      <!--    <i class="fas fa-lg fa-info-circle"></i>-->
+      <!--    <i class="fas fa-lg fa-map-marker" aria-hidden="true"></i>-->
+    <i class="fas fa-lg fa-map-pin" aria-hidden="true"></i>
+  </span>
+    <span><%= @place.name %></span>
+  </div>
+</h2>
+
+<!--紙飛行機-->
+<!--<i class="fa fa-send-o" aria-hidden="true"></i>-->
+
+<!--にっこり 647番から見てほしい-->
+<!--<i class="fa fa-smile-o" aria-hidden="true"></i>-->
+
+<!--ピース-->
+<!--<i class="fab fa-angellist"></i>-->
+
+<!--握り拳-->
+<!--<i class="fas fa-fist-raised"></i>-->
+
+<!--耳-->
+<!--<i class="fas fa-assistive-listening-systems"></i>-->
+
+<!--メモしてる-->
+<!--<i class="fas fa-file-signature"></i>-->
+
+
+
 <% if @place.gone? %>
   <p>行ったよ！</p>
 <% else %>
@@ -28,16 +67,12 @@
 <% end %>
 
 <div>
-  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place) %>
-  <% unless @place.memories.present?%>
-    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
+  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'button is-warning is-light' %>
+  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'button is-success is-light' %>
+  <% unless @place.memories.present? %>
+    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
   <% end %>
-</div>
-
-<div>
-  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place) %>
-</div>
-
-<div>
-  <%= link_to '戻る', prefecture_places_path(@place.prefecture) %>
+  <div class="pt-4">
+    <%= link_to '戻る', prefecture_places_path(@place.prefecture), class: 'button is-info is-light' %>
+  </div>
 </div>

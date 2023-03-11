@@ -33,7 +33,7 @@ class Prefectures::Places::MemoriesController < ApplicationController
 
   def destroy
     if @memory.destroy
-      redirect_to prefecture_place_path(@prefecture, @place), notice: '記録を削除しました。'
+      redirect_to prefecture_place_path(@prefecture, @place), flash: { warning: '記録を削除しました。' }
     else
       redirect_to prefecture_place_path(@prefecture, @place), alert: '削除できませんでした。'
     end

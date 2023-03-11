@@ -1,5 +1,10 @@
 <h1 class="title"><%= @prefecture.name %></h1>
 
+<div class="pb-4">
+  <%= link_to '場所の追加', new_prefecture_place_path(@prefecture), class: 'button is-success is-light' %>
+  <%= link_to '戻る', root_path, class: 'button is-info is-light' %>
+</div>
+
 <% gone_places = [] %>
 <% not_gone_places = [] %>
 
@@ -13,7 +18,3 @@
 
 <%= render 'list', places: gone_places, prefecture: @prefecture, title: '行ったところ' %>
 <%= render 'list', places: not_gone_places, prefecture: @prefecture, title: '行ってみたいところ' %>
-
-
-<%= link_to '場所の追加', new_prefecture_place_path(@prefecture) %>
-<%= link_to '戻る', root_path %>

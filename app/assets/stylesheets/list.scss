@@ -1,0 +1,81 @@
+ul.sample1,
+ul.sample1 ul{
+  width:350px;
+  font-weight: bold;
+  counter-reset: list;
+}
+ul.sample1 ul{
+  margin: 0 0 0 35px;
+  width:315px;
+}
+.category{
+  background: #f9f4ec;
+  display: block;
+  font-size: 105%;
+  padding: 3px 3px 3px 8px;
+}
+.gone{
+  //background: #fed1c3;
+  display: block;
+  color: #6594e0;/*文字色*/
+  /*線の種類（点線）2px 線色*/
+  border-bottom: dashed 2px #6594e0;
+  font-weight: bold;
+  font-size: 125%;
+
+}
+
+.sample1 a{
+  position: relative;
+  display: block;
+  text-decoration: none;
+  padding: 3px 3px 3px 8px;
+  margin: 8px 0 8px 20px;
+  background: #f1f8ff;
+  color: #333;
+  font-weight: bold;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+.sample1 a:hover{
+  background: #ffd9d3;
+}
+
+.sample1 a:before{
+  content: counter(list);
+  counter-increment: list;
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  height: 28px;
+  width: 28px;
+  margin-top: -1em;
+  background: #5c9ee7;
+  line-height: 28px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.sample1 a:after{
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  margin-top: -6px;
+  border: 6px solid transparent;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
+.sample1 a:hover:after{
+  left: -6px;
+  border-left-color: #5c9ee7;
+}

@@ -10,7 +10,7 @@
   <tbody>
     <% @prefectures.each do |prefecture| %>
       <tr>
-        <td><%= link_to prefecture.name, prefecture_places_path(prefecture) %></td>
+        <td><%= link_to prefecture.name, prefecture_places_path(prefecture), class:"button is-small" %></td>
       </tr>
     <% end %>
   </tbody>
