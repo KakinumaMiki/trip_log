@@ -1,30 +1,52 @@
 <%= form_with(model: @memory, url: url) do |form| %>
-  <div class="field">
-    <%= form.label :went_on %>
-    <%= form.date_field :went_on, required: true %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :went_on, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.date_field :went_on, required: true, class: 'input' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :star %>
-    <%= form.number_field :star, in:0.0..5.0, step: 0.1, required: true %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :star, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.number_field :star, in: 0.0..5.0, step: 0.1, required: true, class: 'input' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price, min:0 %>円
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :price, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.number_field :price, min: 0, class: 'input' %>
+      <span class="ml-2 mt-2 has-text-weight-bold">円</span>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :with_who %>
-    <%= form.text_field :with_who %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :with_who, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.text_field :with_who, class: 'input' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :comment, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.text_area :comment, class: 'textarea' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit '作成!', class: 'button is-success is-light' %>
+    <%= form.submit '記録を作成する', class: 'button is-success is-light' %>
   </div>
 <% end %>

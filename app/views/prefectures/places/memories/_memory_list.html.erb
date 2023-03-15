@@ -4,4 +4,8 @@
 <p>誰と：<%= memory.with_who %></p>
 <p>コメント：<%= memory.comment %></p>
 
-<%= link_to '削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+<div class="pt-3">
+  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'button is-warning is-light mr-1' %>
+  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+</div>
+<hr>

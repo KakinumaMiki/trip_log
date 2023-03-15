@@ -2,4 +2,6 @@
 
 <%= render 'form', url: prefecture_place_memory_path(@place.prefecture, @place, @memory) %>
 
-<%= link_to '戻る', prefecture_places_path(@prefecture), class: 'button is-info is-light' %>
+<div class="pt-3">
+  <%= link_to '戻る', prefecture_place_memory_path(@prefecture, @place, @memory), class: 'button is-info is-light' %>
+</div>

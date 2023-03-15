@@ -2,6 +2,6 @@
 
 <%= render 'prefectures/places/memories/memory_list', memory: @memory %>
 
-<%= link_to '編集', edit_prefecture_place_memory_path(@prefecture, @place, @memory), class: 'button is-warning is-light' %>
-
-<%= link_to '場所の詳細に戻る', prefecture_place_path(@prefecture, @place), class: 'button is-info is-light' %>
+<div class="pt-3">
+  <%= link_to '場所の詳細に戻る', prefecture_place_path(@prefecture, @place), class: 'button is-info is-light' %>
+</div>
