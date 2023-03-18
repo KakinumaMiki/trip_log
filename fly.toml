@@ -1,4 +1,4 @@
-# fly.toml file generated for trip-logs on 2022-12-22T15:27:17+09:00
+# fly.toml file generated for trip-logs on 2023-03-18T20:58:42+09:00
 
 app = "trip-logs"
 kill_signal = "SIGINT"
@@ -7,9 +7,8 @@ processes = []
 
 [build]
   [build.args]
-    BUNDLER_VERSION = "2.2.26"
-    NODE_VERSION = "14.16.0"
-    RUBY_VERSION = "2.7.2"
+    BUILD_COMMAND = "bin/rails fly:build"
+    SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
   release_command = "bin/rails fly:release"
