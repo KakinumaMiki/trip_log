@@ -1,58 +1,205 @@
-<h1 class="title">場所の詳細</h1>
-<h2 class="subtitle is-4">
-  <span class="icon">
-  <i class="fas fa-home"></i>
-</span><%= @place.name %></h2>
-
-<h2 class="subtitle is-4">
-  <div class="icon-text">
-    <!--  <span class="icon has-text-info">-->
-    <!--  <span class="icon has-text-success">-->
+<h2 class="title mt-3">
     <span class="icon has-text-danger">
-<!--  <span class="icon">-->
-      <!--    <i class="fas fa-2x fa-info-circle"></i>-->
-      <!--    <i class="fas fa-lg fa-info-circle"></i>-->
-      <!--    <i class="fas fa-lg fa-map-marker" aria-hidden="true"></i>-->
-    <i class="fas fa-lg fa-map-pin" aria-hidden="true"></i>
+    <i class="fas fa-map-pin"></i>
   </span>
-    <span><%= @place.name %></span>
-  </div>
+  <%= @place.name %>
 </h2>
 
-<!--紙飛行機-->
-<!--<i class="fa fa-send-o" aria-hidden="true"></i>-->
+<div class="category_line">
+  <div class="icon-text">
+  <span class="icon has-text-danger pl-4">
+    <% case @place.category.label %>
+    <% when '温泉' then %>
+      <i class="fas fa-table-tennis"></i>
+    <% when '旅館・ホテル' then %>
+      <i class="fas fa-bed"></i>
+    <% when '飲食店' then %>
+      <i class="fas fa-utensils"></i>
+    <% else %>
+      <i class="fas fa-vihara"></i>
+    <% end %>
+  </span>
+    <span class="px-3"><%= @place.category.label %></span>
+  </div>
+</div>
+
+<div class="box17">
+  <!--  <p>ここに文章xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>-->
+  <div class="columns">
+    <div class="column">
+      First column
+    </div>
+    <div class="column">
+      <!--      Second column-->
+      <% if @place.gone? %>
+        <p>行ったよ！</p>
+      <% else %>
+        <p>行きたい！</p>
+      <% end %>
+    </div>
+    <div class="column is-half">
+      <!--      Third column-->
+      <% memories = @place.memories %>
+      <% if memories.size == 1 %>
+        <%= render 'prefectures/places/memories/memory_list', memory: memories.first %>
+      <% elsif memories.size > 1 %>
+<!--        <%#= @place.memories.ave_by_stars %>（平均）-->
+
+        <div class="average-score mb-3">
+          <div class="star-rating">
+            <div class="star-rating-front" style="width: <%= @place.memories.avg_stars_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+          <div class="average-score-display">
+            （<%= @place.memories.avg_stars %>）
+          </div>
+        </div>
+
+
+
+        <table>
+          <tbody>
+            <% memories.order(went_on: :desc).each do |memory| %>
+              <tr>
+                <td><%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="tile is-ancestor">
+  <div class="tile">
+    <div class="tile is-parent">
+      <div class="tile is-child notification is-primary is-8">
+        左のタイル
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <div class="tile is-child notification is-link">
+        右のタイル
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!--にっこり 647番から見てほしい-->
 <!--<i class="fa fa-smile-o" aria-hidden="true"></i>-->
 
 <!--ピース-->
-<!--<i class="fab fa-angellist"></i>-->
+<div class="icon-text">
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-grin"></i>
+  </span>
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-alt"></i>
+  </span>
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-beam"></i>
+  </span>
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-hearts"></i>
+  </span>
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-squint"></i>
+  </span>
+  <span class="icon has-text-info">
+    <i class="fas fa-grin-wink"></i>
+  </span>
+  <span>行ったよ！</span>
+</div>
 
 <!--握り拳-->
-<!--<i class="fas fa-fist-raised"></i>-->
+<div class="icon-text">
+  <span class="icon has-text-info">
+<i class="fas fa-fist-raised"></i>
+  </span>
+  <span>行きたい！</span>
+</div>
 
 <!--耳-->
-<!--<i class="fas fa-assistive-listening-systems"></i>-->
+<div class="icon-text">
+  <span class="icon has-text-danger">
+<i class="fas fa-assistive-listening-systems"></i>
+  </span>
+  <span>耳</span>
+</div>
 
 <!--メモしてる-->
-<!--<i class="fas fa-file-signature"></i>-->
+<div class="icon-text">
+  <span class="icon has-text-danger">
+<i class="fas fa-file-signature"></i>
+  </span>
+  <span>メモ</span>
+</div>
 
 
+<div class="icon-text">
+  <span class="icon has-text-danger">
+<i class="fas fa-table-tennis"></i>
+  </span>
+  <span>温泉</span>
+</div>
+
+
+<div class="icon-text">
+  <span class="icon has-text-danger">
+    <i class="fas fa-bed"></i>
+  </span>
+  <span>旅館・ホテル</span>
+</div>
+
+
+<div class="icon-text">
+  <span class="icon has-text-danger">
+    <i class="fas fa-utensils"></i>
+  </span>
+  <span>飲食店</span>
+</div>
+
+
+<div class="icon-text">
+  <span class="icon has-text-danger">
+<i class="fas fa-vihara"></i>
+  </span>
+  <span>その他（観光地等）</span>
+</div>
+
+
+<div class="icon-text">
+  <span class="icon has-text-danger">
+<i class="fas fa-route"></i>
+  </span>
+  <span>住所</span>
+</div>
 
 <% if @place.gone? %>
   <p>行ったよ！</p>
 <% else %>
   <p>行きたい！</p>
 <% end %>
-<%= @place.prefecture.name %>
+<%#= @place.prefecture.name %>
 
 <p>カテゴリー: <%= @place.category.label %></p>
 <p>住所: <%= @place.address %></p>
 <p>メモ: <%= @place.memo %></p>
 
+<div class="pt-3">
+  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'button is-warning is-light' %>
+  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'button is-success is-light mx-1' %>
+  <% unless @place.memories.present? %>
+    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+  <% end %>
+</div>
+
+<hr>
 <% memories = @place.memories %>
 <% if memories.size == 1 %>
-  --------------------------------
   <%= render 'prefectures/places/memories/memory_list', memory: memories.first %>
 <% elsif memories.size > 1 %>
   <table>
@@ -66,13 +213,13 @@
   </table>
 <% end %>
 
-<div>
-  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'button is-warning is-light' %>
-  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'button is-success is-light' %>
-  <% unless @place.memories.present? %>
-    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
-  <% end %>
-  <div class="pt-4">
+<div class="pt-3">
+  <%#= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'button is-warning is-light' %>
+  <%#= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'button is-success is-light mx-1' %>
+  <%# unless @place.memories.present? %>
+  <%#= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+  <%# end %>
+  <div class="pt-3">
     <%= link_to '戻る', prefecture_places_path(@place.prefecture), class: 'button is-info is-light' %>
   </div>
 </div>
