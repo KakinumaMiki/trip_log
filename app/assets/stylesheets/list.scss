@@ -3,10 +3,9 @@ ul.sample1 ul{
   width:350px;
   font-weight: bold;
   counter-reset: list;
-  list-style: none;
 }
 ul.sample1 ul{
-  margin: 0 0 0 35px;
+  margin: 0 0 0 40px;
   width:315px;
 }
 .category{
@@ -23,7 +22,6 @@ ul.sample1 ul{
   border-bottom: dashed 2px #6594e0;
   font-weight: bold;
   font-size: 125%;
-
 }
 
 .sample1 a{
@@ -79,4 +77,7 @@ ul.sample1 ul{
 .sample1 a:hover:after{
   left: -6px;
   border-left-color: #5c9ee7;
+}
+li::marker {
+  font-size: 0em;
 }
