@@ -1,6 +1,7 @@
 <% flash.each do |key,value|
   key = "info" if key == "notice"
   key = "danger" if key == "alert"
+  key = "warning" if key == "warning"
 %>
-  <%= content_tag :div, value, class: "alert alert-#{key} mt-3"%>
+  <%= content_tag(:article, content_tag(:div, value, class: "message-body"), class: "message is-#{key}")%>
 <% end %>

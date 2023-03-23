@@ -1,7 +1,48 @@
-<p>日付：<%= memory.went_on %></p>
-<p>評価：<%= memory.star %></p>
-<p>値段：<%= memory.price %></p>
-<p>誰と：<%= memory.with_who %></p>
-<p>コメント：<%= memory.comment %></p>
+<!--日付-->
+<div class="date_line"><%= memory.went_on %></div>
 
-<%= link_to '削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' } } %>
+<!--評価-->
+<div class="average-score my-3">
+  <div class="star-rating">
+    <div class="star-rating-front" style="width: <%= memory.star.round(1).to_f * 100 / 5 %>%">★★★★★</div>
+    <div class="star-rating-back">★★★★★</div>
+  </div>
+  <div class="average-score-display">
+    （<%= memory.star %>）
+  </div>
+</div>
+
+<!--金額-->
+<div class="sentence_line">
+  <div class="icon-text">
+  <span class="icon has-text-success">
+    <i class="fas fa-donate"></i>
+  </span>
+    <span class="pr-2"><%= memory.price %>円</span>
+  </div>
+</div>
+
+<!--誰と-->
+<div class="sentence_line pt-3">
+  <div class="icon-text">
+  <span class="icon has-text-success">
+    <i class="fas fa-user-friends"></i>
+  </span>
+    <span class="pr-2"><%= memory.with_who %></span>
+  </div>
+</div>
+
+<div class="memo_box">
+  <div class="icon-text">
+          <span class="icon has-text-danger">
+            <i class="fas fa-file-signature"></i>
+          </span>
+    <span><%= simple_format(memory.comment) %></span>
+  </div>
+</div>
+
+<hr>
+<div class="pb-4">
+  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'button is-warning is-light mr-1' %>
+  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+</div>

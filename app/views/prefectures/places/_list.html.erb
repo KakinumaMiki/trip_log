@@ -1,9 +1,9 @@
-<div>
-  <%= title %>
-  <ul>
+<div class="content">
+  <dev class="gone"><%= title %></dev>
+  <ul class="sample1">
     <% Category.order(:id).each do |category| %>
       <li>
-        <%= category.label %>
+        <dev class="category"><%= category.label %></dev>
         <ul>
           <% places.each do |place| %>
             <% if place.category == category %>
