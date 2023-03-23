@@ -39,56 +39,15 @@
   </div>
 
   <div class="field is-horizontal">
-    <!--        <div class="control is-expanded">-->
-    <!--        <div class="select is-fullwidth">-->
     <div class="field-label is-normal">
       <%= form.label :category_id, class: 'label' %>
     </div>
     <div class="field-body">
       <span class="select is-fullwidth">
-      <%#= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, class: 'select' %>
         <%= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, { class: 'form-control' } %>
       </span>
     </div>
   </div>
-  <!--    </div>-->
-  <!--    </div>-->
-
-  <!--  <div class="field is-horizontal">-->
-  <!--        <div class="control is-expanded">-->
-  <!--        <div class="select is-fullwidth">-->
-  <!--    <div class="field-label is-normal">-->
-  <%#= form.label :category_id, class: 'label' %>
-  <!--    </div>-->
-  <!--    <div class="column is-half">-->
-  <!--      <div class="field-body">-->
-  <!--      <span class="select is-fullwidth">-->
-  <%#= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, { class: 'form-control' } %>
-
-  <!--      </span>-->
-  <%#= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, class: 'select' %>
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--    </div>-->
-
-
-
-
-
-
-  <!--  <div class="columns">-->
-  <%#= form.label :category_id, class: 'label is-normal' %>
-  <!--    <div class="column is-half">-->
-  <!--      <div class="field">-->
-  <!--        <p class="control">-->
-  <!--            <span class="select is-fullwidth">-->
-  <%#= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, { class: 'form-control' } %>
-  <!--            </span>-->
-  <!--        </p>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
 
   <div class="actions">
     <%= form.submit '場所を追加する', class: 'button is-success is-light' %>

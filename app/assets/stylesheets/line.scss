@@ -1,0 +1,41 @@
+.category_line{
+  font-size: x-large;
+  margin-left: 20px;
+  margin-top: 4px;
+  display: inline-block;
+  font-weight: bold;
+
+  //border-bottom: dashed 2px #6594e0;
+  border-bottom: dashed 2px #ffc2cc;
+}
+
+.sentence_line {
+  border-bottom: dotted 2px #80c684;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.date_line {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+  font-weight: bold;
+}
+
+.date_line:before, .date_line:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 1px #a3d6d7;
+  border-bottom: solid 1px #a3d6d7;
+}
+
+.date_line:before {
+  left:0;
+}
+.date_line:after {
+  right: 0;
+}

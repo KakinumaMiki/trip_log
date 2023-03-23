@@ -3,6 +3,7 @@ ul.sample1 ul{
   width:350px;
   font-weight: bold;
   counter-reset: list;
+  list-style: none;
 }
 ul.sample1 ul{
   margin: 0 0 0 35px;
@@ -78,32 +79,4 @@ ul.sample1 ul{
 .sample1 a:hover:after{
   left: -6px;
   border-left-color: #5c9ee7;
-}
-
-
-
-.box17{
-  margin:2em 0;
-  position: relative;
-  padding: 0.5em 1.5em;
-  //border-top: solid 2px black;
-  //border-bottom: solid 2px black;
-  border-top: solid 2px #92b2b9;
-  border-bottom: solid 2px #92b2b9;
-}
-.box17:before, .box17:after{
-  content: '';
-  position: absolute;
-  top: -10px;
-  width: 2px;
-  height: -webkit-calc(100% + 20px);
-  height: calc(100% + 20px);
-  //background-color: black;
-  background-color: #d4d3ce;
-}
-.box17:before {left: 10px;}
-.box17:after {right: 10px;}
-.box17 p {
-  margin: 0;
-  padding: 0;
 }
