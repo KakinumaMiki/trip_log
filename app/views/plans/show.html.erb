@@ -1,0 +1,39 @@
+<p>
+  <strong>Name:</strong>
+  <%= @plan.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @plan.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @plan.end_date %>
+</p>
+
+<p>
+  <strong>with_who:</strong>
+  <%= @plan.with_who %>
+</p>
+
+<p>
+  <strong>memo:</strong>
+  <%= @plan.memo %>
+</p>
+
+<% @plan.schedules.each do |schedule| %>
+  <div><%= schedule.name %></div>
+  <ul>
+    <% schedule.places.each do |place| %>
+      <li>
+        <%= schedule.start_at(place)&.strftime('%H:%M') %>
+        <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer" %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>

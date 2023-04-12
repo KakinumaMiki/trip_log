@@ -1,0 +1,41 @@
+.textlink {
+  position: relative;
+  color: #0a7d99;
+  text-decoration: none;
+}
+.textlink:hover {
+  color: #b99b00;
+}
+
+.fluorescent:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 10px;
+  background-color: rgba(185,155,0,0.5);
+  transition: width 0.3s;
+}
+
+.fluorescent:hover::after {
+  width: 100%;
+}
+
+.circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background-color: rgba(185,155,0,0.5);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.circle:hover::after {
+  width: 20px;
+  height: 20px;
+}

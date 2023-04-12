@@ -75,7 +75,7 @@
           <tbody>
             <% memories.order(went_on: :desc).each do |memory| %>
               <tr>
-                <td><%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory) %></td>
+                <td><%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory), class: "textlink circle" %></td>
               </tr>
             <% end %>
           </tbody>
