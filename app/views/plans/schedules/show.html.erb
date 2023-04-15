@@ -1,0 +1,30 @@
+<h1 class="title">
+  <%= @schedule.name %>
+</h1>
+
+<div class="date_line my-3"><%= @schedule.went_on %></div>
+
+<ul>
+  <% @schedule.ordered_places.each do |place| %>
+    <li class="ml-4">
+      <%= @schedule.start_at(place)&.strftime('%H:%M') %>
+      <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="memo_box mx-3">
+  <div class="icon-text">
+          <span class="icon has-text-danger">
+            <i class="fas fa-file-signature"></i>
+          </span>
+    <span><%= simple_format(@schedule.memo) %></span>
+  </div>
+</div>
+
+<div class="is-inline-block">
+  <%= link_to '編集', edit_plan_schedule_path(@plan, @schedule), class: 'button is-warning is-light level-item level-right' %>
+</div>
+<div class="py-3">
+  <%= link_to '戻る', plan_path(@plan), class: 'button is-info is-light' %>
+</div>

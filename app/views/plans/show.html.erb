@@ -17,10 +17,10 @@
 
 <% @plan.schedules.order(:id).each do |schedule| %>
   <div class="category_line level-left pl-2 m-3">
-    <%= schedule.name %>
+    <%= link_to schedule.name, plan_schedule_path(@plan, schedule) %>
   </div>
   <ul>
-    <% schedule.places.each do |place| %>
+    <% schedule.ordered_places.each do |place| %>
       <li class="ml-4">
         <%= schedule.start_at(place)&.strftime('%H:%M') %>
         <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
@@ -28,7 +28,6 @@
     <% end %>
   </ul>
 <% end %>
-
 
 <div class="memo_box mx-3">
   <div class="icon-text">
@@ -39,42 +38,6 @@
   </div>
 </div>
 
-<!--<p>-->
-<!--  <strong>Name:</strong>-->
-<%#= @plan.name %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>Start date:</strong>-->
-<%#= @plan.start_date %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>End date:</strong>-->
-<%#= @plan.end_date %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>with_who:</strong>-->
-<%#= @plan.with_who %>
-<!--</p>-->
-
-<!--<p>-->
-<!--  <strong>memo:</strong>-->
-<%#= @plan.memo %>
-<!--</p>-->
-
-<%# @plan.schedules.each do |schedule| %>
-<!--  <div><%#= schedule.name %></div>-->
-<!--  <ul>-->
-<%# schedule.places.each do |place| %>
-<!--      <li>-->
-<%#= schedule.start_at(place)&.strftime('%H:%M') %>
-<%#= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer" %>
-<!--      </li>-->
-<%# end %>
-<!--  </ul>-->
-<%# end %>
 <div class="level mt-5 mb-3">
   <div class="level-left">
     <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
