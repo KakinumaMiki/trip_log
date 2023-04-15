@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :plans do
     scope module: :plans do
-      resources :schedules
+      resources :schedules, except: [:index]
     end
   end
 end

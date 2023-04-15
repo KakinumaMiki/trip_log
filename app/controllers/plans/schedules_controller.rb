@@ -1,35 +1,35 @@
 class Plans::SchedulesController < ApplicationController
 
-  def index
-    @places = @prefecture.places
-
-  end
-
   def new
     @plan = Plan.find(params[:plan_id])
     @schedule = @plan.schedules.build
     @place_schedules = @schedule.place_schedules.build
     @places = Place.all
-    # @memory = @place.memories.build
-    # @schedule =
   end
 
   def create
-    # @memory = @place.memories.build(memory_params)
-    #
-    # if @memory.save
-    #   redirect_to prefecture_place_memory_path(@prefecture, @place, @memory), notice: '新規作成されました。'
-    # else
-    #   render :new
-    # end
+    @plan = Plan.find(params[:plan_id])
+    @schedule = @plan.schedules.build(schedule_params)
+    if @schedule.save
+      # ユーザーが選択した場所を取得
+      places = Place.where(id: params[:place_ids])
+      # 選択された場所とscheduleテーブルに保存された"1日目"のidをplace_schedulesテーブルに保存
+      places.each do |place|
+        @schedule.places << place
+      end
+      redirect_to plan_path(@plan), notice: '新規作成されました。'
+    else
+      render :new
+    end
   end
 
   private
   def schedule_params
     # params.require(:memory).permit(:went_on, :with_who, :comment, :star, :price)
-    params.require(:schedule).permit(:name, :went_on, :memo)
+    params.require(:schedule).permit(:name, :went_on, :memo, place_ids: [])
   end
 end
 
 # indexはいらなくて、new, create, edit, update , deleteかな。
+# showはどうするか
 # routesも修正する、viewも
