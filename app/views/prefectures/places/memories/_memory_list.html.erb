@@ -42,7 +42,7 @@
 </div>
 
 <hr>
-<div class="pb-4">
-  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'button is-warning is-light mr-1' %>
-  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+<div class="level pb-4">
+  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'level-left button is-warning is-light mr-1' %>
+  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'level-right button is-danger is-light' } %>
 </div>

@@ -1,157 +1,59 @@
 <h1 class="title">旅のプラン一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Start date</th>-->
+<!--      <th>End date</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
 
-  <tbody>
-    <% @plans.each do |plan| %>
-      <tr>
-                <td><%= plan.name %></td>
-        <td><%= link_to plan.name, plan_path(plan), class: "textlink circle" %></td>
-        <td><%= plan.start_date %></td>
-        <td><%= plan.end_date %></td>
-        <td><%= link_to 'Show', plan %></td>
-        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--  <tbody>-->
+<%# @plans.each do |plan| %>
+<!--      <tr>-->
+<!--        <td><%#= plan.name %></td>-->
+<!--        <td><%#= link_to plan.name, plan_path(plan), class: "textlink circle" %></td>-->
+<!--        <td><%#= plan.start_date %></td>-->
+<!--        <td><%#= plan.end_date %></td>-->
+<!--        <td><%#= link_to 'Show', plan %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_plan_path(plan) %></td>-->
+<!--        <td><%#= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<%# end %>
+<!--  </tbody>-->
+<!--</table>-->
 
-<br>
+<!--<br>-->
 
-<%= link_to 'プランの作成', new_plan_path, class: 'button is-success is-light' %>
-<div class="py-3">
-  <%= link_to '戻る', root_path, class: 'button is-info is-light' %>
-</div>
-
-
-<!--<div class="sentence_line">-->
-<!--  <div class="icon-text">-->
-<!--  <span class="icon has-text-success">-->
-<!--    <i class="fas fa-donate"></i>-->
-<!--  </span>-->
-<!--    <span class="pr-2">円</span>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--誰と-->
-<!--<div class="sentence_line pt-3">-->
-<!--  <div class="icon-text">-->
-<!--  <span class="icon has-text-success">-->
-<!--    <i class="fas fa-user-friends"></i>-->
-<!--  </span>-->
-<!--    <span class="pr-2">誰</span>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
-
-<div class="content">
-  <dev class="gone">title</dev>
-  <ul class="sample1">
-    <% Category.order(:id).each do |category| %>
-    <li>
-      <dev class="category">カテゴリ</dev>
-      <ul>
-        <% @plans.each do |plan| %>
-          <li class="is-inline-block">
-            <%= link_to plan.name, root_path %>
-          </li>
-          <span class="sentence_line">
-                    with
-                  </span>
-        <% end %>
-      </ul>
-    </li>
-    <% end %>
-  </ul>
-</div>
-
-<!--<div class="columns">-->
-<!--  <div class="column">-->
-<!--    a-->
-<!--  </div>-->
-<!--  <div class="column">-->
-<!--    i-->
-<!--  </div>-->
-<!--  <div class="column is-half">-->
-<!--    u-->
-<!--  </div>-->
-<!--</div>-->
-
-<hr>
-
-<td>
-  <%= link_to "の記録", root_path %>
-  <span class="sentence_line">
-                    with
-                  </span>
-</td>
-
-
-<hr>
-一番イメージに近い
-<div class="content">
-  <ul class="sample1">
-    <% @plans.each do |plan| %>
-      <li>
-        <!--      <%#= link_to plan.name, root_path, class="is-inline-block"%>  a-->
-        <!--      <%#= link_to plan.name, root_path%>  a-->
-        <div class="is-inline-block">
-          <%= link_to plan.name, root_path %>
-        </div>
-        <span>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-      </li>
-      <div class="sentence_line pt-3">
-        <div class="icon-text">
-          <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
-          <span class="pr-2"><%= plan.with_who %></span>
-        </div>
-      </div>
-      <div class="sentence_line pt-3">
-        <div class="icon-text">
-          <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
-          <span class="pr-2"><%= plan.start_date %> ~ <%= plan.end_date %></span>
-        </div>
-      </div>
-    <% end %>
-  </ul>
-</div>
-
-<hr>
-
-
-
-<!--<div class="columns">-->
-<!--  <div class="column">-->
-<!--    a-->
-<!--  </div>-->
-<!--  <div class="column">-->
-<!--    i-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
-
-試し
-<!--  <ul class="sample1">-->
-  <ul>
-    <% @plans.each do |plan| %>
+<ul class="ml-3">
+  <% @plans.order(start_date: :asc).each do |plan| %>
+    <div class="pt-3">
       <li style="display: flex">
-        <span style="width: 200px"><%= link_to plan.name, plan_path(plan), class: "textlink circle" %></span>
-        <span>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+        <span style="width: 250px" class="has-text-weight-bold"><%= link_to plan.name, plan_path(plan), class: "textlink circle" %></span>
+        <span style="width: 150px">
+        <div class="sentence_line">
+          <div class="icon-text">
+            <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
+            <span class="pr-2"><%= plan.with_who %></span>
+          </div>
+        </div>
+        </span>
+        <div class="sentence_line">
+          <div class="icon-text">
+            <span class="icon has-text-success"><i class="fas fa-calendar-alt"></i></span>
+            <span class="pr-2"><%= plan.date %></span>
+          </div>
+        </div>
       </li>
-    <% end %>
-  </ul>
+    </div>
+  <% end %>
+</ul>
 
-<hr>
+<div class="py-3">
+  <%= link_to 'プランの作成', new_plan_path, class: 'button is-success is-light' %>
+  <div class="pt-3">
+    <%= link_to '戻る', root_path, class: 'button is-info is-light' %>
+  </div>
+</div>

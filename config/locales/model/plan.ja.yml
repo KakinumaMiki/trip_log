@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      plan:
+        went_on: 行った日にち
+        name: プラン名
+        start_date: 開始日時
+        end_date: 終了日時
+        with_who: 誰と
+        memo: メモ
+    models:
+      memory: 記録

@@ -1,33 +1,27 @@
-<p>
-  <strong>Name:</strong>
+<h2 class="title mt-3">
+    <span class="icon has-text-danger">
+    <i class="fas fa-map-pin"></i>
+  </span>
   <%= @plan.name %>
-</p>
+</h2>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @plan.start_date %>
-</p>
+<div class="date_line"><%= @plan.date %></div>
+<div class="sentence_line pt-3 ml-5">
+  <div class="icon-text">
+  <span class="icon has-text-success">
+    <i class="fas fa-user-friends"></i>
+  </span>
+    <span><%= @plan.with_who %></span>
+  </div>
+</div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @plan.end_date %>
-</p>
-
-<p>
-  <strong>with_who:</strong>
-  <%= @plan.with_who %>
-</p>
-
-<p>
-  <strong>memo:</strong>
-  <%= @plan.memo %>
-</p>
-
-<% @plan.schedules.each do |schedule| %>
-  <div><%= schedule.name %></div>
+<% @plan.schedules.order(:id).each do |schedule| %>
+  <div class="category_line level-left pl-2 m-3">
+    <%= schedule.name %>
+  </div>
   <ul>
     <% schedule.places.each do |place| %>
-      <li>
+      <li class="ml-4">
         <%= schedule.start_at(place)&.strftime('%H:%M') %>
         <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer" %>
       </li>
@@ -35,5 +29,61 @@
   </ul>
 <% end %>
 
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>
+
+<div class="memo_box mx-3">
+  <div class="icon-text">
+          <span class="icon has-text-danger">
+            <i class="fas fa-file-signature"></i>
+          </span>
+    <span><%= simple_format(@plan.memo) %></span>
+  </div>
+</div>
+
+<!--<p>-->
+<!--  <strong>Name:</strong>-->
+<%#= @plan.name %>
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Start date:</strong>-->
+<%#= @plan.start_date %>
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>End date:</strong>-->
+<%#= @plan.end_date %>
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>with_who:</strong>-->
+<%#= @plan.with_who %>
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>memo:</strong>-->
+<%#= @plan.memo %>
+<!--</p>-->
+
+<%# @plan.schedules.each do |schedule| %>
+<!--  <div><%#= schedule.name %></div>-->
+<!--  <ul>-->
+<%# schedule.places.each do |place| %>
+<!--      <li>-->
+<%#= schedule.start_at(place)&.strftime('%H:%M') %>
+<%#= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer" %>
+<!--      </li>-->
+<%# end %>
+<!--  </ul>-->
+<%# end %>
+<div class="level mt-5 mb-3">
+  <div class="level-left">
+    <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
+    <%= link_to '日毎の作成', root_path, class: 'button is-success is-light level-item' %>
+  </div>
+  <% unless @plan.schedules.present? %>
+    <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light level-right' %>
+  <% end %>
+</div>
+<div class="mb-3">
+  <%= link_to '戻る', plans_path, class: 'button is-info is-light' %>
+</div>

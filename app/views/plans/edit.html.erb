@@ -1,6 +1,7 @@
-<h1>Editing Plan</h1>
+<h1 class="title">プランの編集</h1>
 
 <%= render 'form', plan: @plan %>
 
-<%= link_to 'Show', @plan %> |
-<%= link_to 'Back', plans_path %>
+<div class="py-3">
+  <%= link_to '戻る', plan_path(@plan), class: 'button is-info is-light' %>
+</div>

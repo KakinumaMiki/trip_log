@@ -85,16 +85,16 @@
   </div>
 </div>
 
-<div class="pt-3">
-  <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'button is-warning is-light' %>
-  <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'button is-success is-light mx-1' %>
+<div class="level pt-3">
+  <div class="level-left">
+    <%= link_to '場所の編集', edit_prefecture_place_path(@prefecture, @place), class: 'level-item button is-warning is-light' %>
+    <%= link_to '記録の作成', new_prefecture_place_memory_path(@prefecture, @place), class: 'level-item button is-success is-light mx-1' %>
+  </div>
   <% unless @place.memories.present? %>
-    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+    <%= link_to '場所の削除', prefecture_place_path(@prefecture, @place), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'level-right button is-danger is-light' } %>
   <% end %>
 </div>
 
-<div class="pt-3">
-  <div class="pt-3">
-    <%= link_to '戻る', prefecture_places_path(@place.prefecture), class: 'button is-info is-light' %>
-  </div>
+<div class="py-3">
+  <%= link_to '戻る', prefecture_places_path(@place.prefecture), class: 'button is-info is-light' %>
 </div>
