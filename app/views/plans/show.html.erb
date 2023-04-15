@@ -23,7 +23,7 @@
     <% schedule.places.each do |place| %>
       <li class="ml-4">
         <%= schedule.start_at(place)&.strftime('%H:%M') %>
-        <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer" %>
+        <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
       </li>
     <% end %>
   </ul>
@@ -78,7 +78,7 @@
 <div class="level mt-5 mb-3">
   <div class="level-left">
     <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
-    <%= link_to '日毎の作成', root_path, class: 'button is-success is-light level-item' %>
+    <%= link_to '日毎の作成', new_plan_schedule_path(@plan), class: 'button is-success is-light level-item' %>
   </div>
   <% unless @plan.schedules.present? %>
     <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light level-right' %>
