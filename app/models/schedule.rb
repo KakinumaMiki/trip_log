@@ -3,7 +3,7 @@ class Schedule < ApplicationRecord
   has_many :place_schedules
   has_many :places, through: :place_schedules
 
-  # accepts_nested_attributes_for :places
+  accepts_nested_attributes_for :place_schedules
 
   def ordered_places
     places.order(:start_at)

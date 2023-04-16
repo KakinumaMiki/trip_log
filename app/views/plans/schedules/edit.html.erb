@@ -1,5 +1,8 @@
 <h1 class="title"><%= "#{@schedule.name}の編集" %></h1>
 
+<%#= render 'form' %>
+
+<!--ここ元々-->
 <%= form_with(model: [@plan, @schedule]) do |form| %>
   <div class="field is-horizontal">
     <div class="field-label is-normal">
@@ -34,13 +37,24 @@
     </div>
     <div class="field-body">
       <% @places.each do |place| %>
-        <%= check_box_tag 'schedule[place_ids][]', place.id, false %>
+        <%= check_box_tag 'schedule[place_ids][]', place.id, @schedule.places.include?(place) %>
         <span class="ml-1 mr-3">
-        <%= place.name %>
+          <%= place.name %>
         </span>
       <% end %>
     </div>
   </div>
+
+
+  <%= form.fields_for :place_schedules do |place_schedule| %>
+    <% place = place_schedule.object.place %>
+    <%= place_schedule.label :place do %>
+      <%= place.name %>
+    <% end %>
+
+    <%= place_schedule.hidden_field :place_id, value: place.id %>
+    <%= place_schedule.time_field :start_at, class: 'input' %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit class: 'button is-success is-light' %>
@@ -50,3 +64,24 @@
 <div class="py-3">
   <%= link_to '戻る', plan_schedule_path(@plan, @schedule), class: 'button is-info is-light' %>
 </div>
+
+
+
+
+
+<%#= form_with(model: @schedule, url: plan_schedule_path) do |form| %>
+<%#= form.fields_for :place_schedules do |place_schedule| %>
+<%# place = place_schedule.object.place %>
+<%#= place_schedule.label :place do %>
+<%#= place.name %>
+<%# end %>
+<%#= place_schedule.hidden_field :place_id, value: place.id %>
+
+<%#= place_schedule.datetime_local_field :start_at, class: 'input' %>
+<%# end %>
+
+
+<!--  <div class="actions">-->
+<%#= form.submit 'Update Schedule', class: 'btn btn-primary' %>
+<!--  </div>-->
+<%# end %>

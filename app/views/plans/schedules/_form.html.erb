@@ -1,18 +1,4 @@
-<%#= form_with(model: plans_schedule) do |form| %>
 <%= form_with(model: [@plan, @schedule]) do |form| %>
-
-  <%# if plans_schedule.errors.any? %>
-  <!--    <div id="error_explanation">-->
-  <!--      <h2><%#= pluralize(plans_schedule.errors.count, "error") %> prohibited this plans_schedule from being saved:</h2>-->
-
-  <!--      <ul>-->
-  <%# plans_schedule.errors.each do |error| %>
-  <!--          <li><%#= error.full_message %></li>-->
-  <%# end %>
-  <!--      </ul>-->
-  <!--    </div>-->
-  <%# end %>
-
   <div class="field is-horizontal">
     <div class="field-label is-normal">
       <%= form.label :name, class: 'label' %>
@@ -46,11 +32,8 @@
     </div>
     <div class="field-body">
       <% @places.each do |place| %>
-        <%= check_box_tag 'schedule[place_ids][]', place.id, false %>
-        <%#= place.name %>
-        <span class="mx-1">
-        <%= "#{place.name}" %>
-        </span>
+        <%= check_box_tag 'schedule[place_ids][]', place.id, @schedule.places.include?(place) %>
+        <span class="ml-1 mr-3"><%= place.name %></span>
       <% end %>
     </div>
   </div>
