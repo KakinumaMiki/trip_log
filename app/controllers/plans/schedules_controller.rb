@@ -15,7 +15,7 @@ class Plans::SchedulesController < ApplicationController
     if @schedule.save
       # ユーザーが選択した場所を取得
       places = Place.where(id: params[:place_ids])
-      # 選択された場所とscheduleテーブルに保存された"1日目"のidをplace_schedulesテーブルに保存
+      # 選択された場所とscheduleテーブルに保存されたidをplace_schedulesテーブルに保存
       places.each do |place|
         @schedule.places << place
       end

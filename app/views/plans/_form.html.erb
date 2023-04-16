@@ -1,17 +1,4 @@
-<%#= form_with(model: [@plan, @places]) do |form| %>
 <%= form_with(model: plan) do |form| %>
-  <%# if plan.errors.any? %>
-  <!--    <div id="error_explanation">-->
-  <!--      <h2><%#= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>-->
-
-  <!--      <ul>-->
-  <%# plan.errors.each do |error| %>
-  <!--          <li><%#= error.full_message %></li>-->
-  <%# end %>
-  <!--      </ul>-->
-  <!--    </div>-->
-  <%# end %>
-
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
@@ -57,14 +44,6 @@
       <%= form.text_area :memo, class: 'textarea' %>
     </div>
   </div>
-
-  <!--  <div class="check-boxes">-->
-  <%#= form.collection_check_boxes :place_ids, @places, :id, :name do |b| %>
-  <!--      <div class="d-inline-block mr-3">-->
-  <%#= b.label { b.check_box + b.text } %>
-  <!--      </div>-->
-  <%# end %>
-  <!--  </div>-->
 
   <div class="actions">
     <%= form.submit class: 'button is-success is-light' %>

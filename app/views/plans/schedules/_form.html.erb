@@ -38,6 +38,10 @@
     </div>
   </div>
 
+  <% if is_start_at %>
+    <%= render 'plans/schedules/start_at', form: form, schedule: @schedule %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit class: 'button is-success is-light' %>
   </div>
