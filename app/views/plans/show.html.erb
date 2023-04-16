@@ -1,16 +1,12 @@
 <h2 class="title mt-3">
-    <span class="icon has-text-danger">
-    <i class="fas fa-map-pin"></i>
-  </span>
+  <span class="icon has-text-danger"><i class="fas fa-map-pin"></i></span>
   <%= @plan.name %>
 </h2>
 
 <div class="date_line"><%= @plan.date %></div>
 <div class="sentence_line pt-3 ml-5">
   <div class="icon-text">
-  <span class="icon has-text-success">
-    <i class="fas fa-user-friends"></i>
-  </span>
+    <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
     <span><%= @plan.with_who %></span>
   </div>
 </div>
@@ -21,8 +17,8 @@
   </div>
   <ul>
     <% schedule.ordered_places.each do |place| %>
-      <li class="ml-4">
-        <%= schedule.start_at(place)&.strftime('%H:%M') %>
+      <li class="ml-4" style="display: flex">
+        <span style="width: 50px"><%= schedule.start_at(place)&.strftime('%H:%M') %></span>
         <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
       </li>
     <% end %>
@@ -31,9 +27,7 @@
 
 <div class="memo_box mx-3">
   <div class="icon-text">
-          <span class="icon has-text-danger">
-            <i class="fas fa-file-signature"></i>
-          </span>
+    <span class="icon has-text-danger"><i class="fas fa-file-signature"></i></span>
     <span><%= simple_format(@plan.memo) %></span>
   </div>
 </div>

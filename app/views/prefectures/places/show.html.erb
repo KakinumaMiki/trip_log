@@ -1,25 +1,23 @@
 <h2 class="title mt-3">
-    <span class="icon has-text-danger">
-    <i class="fas fa-map-pin"></i>
-  </span>
+  <span class="icon has-text-danger"><i class="fas fa-map-pin"></i></span>
   <%= @place.name %>
 </h2>
 
 <div class="level">
   <div class="category_line level-left">
     <div class="icon-text">
-  <span class="icon has-text-danger pl-4">
-    <% case @place.category.label %>
-    <% when '温泉' then %>
-      <i class="fas fa-table-tennis"></i>
-    <% when '旅館・ホテル' then %>
-      <i class="fas fa-bed"></i>
-    <% when '飲食店' then %>
-      <i class="fas fa-utensils"></i>
-    <% else %>
-      <i class="fas fa-vihara"></i>
-    <% end %>
-  </span>
+      <span class="icon has-text-danger pl-4">
+        <% case @place.category.label %>
+        <% when '温泉' then %>
+          <i class="fas fa-table-tennis"></i>
+        <% when '旅館・ホテル' then %>
+          <i class="fas fa-bed"></i>
+        <% when '飲食店' then %>
+          <i class="fas fa-utensils"></i>
+        <% else %>
+          <i class="fas fa-vihara"></i>
+        <% end %>
+      </span>
       <span class="px-3"><%= @place.category.label %></span>
     </div>
   </div>
@@ -39,18 +37,14 @@
     <div class="column">
       <div class="sentence_line">
         <div class="icon-text">
-        <span class="icon has-text-danger">
-          <i class="fas fa-route"></i>
-        </span>
+          <span class="icon has-text-danger"><i class="fas fa-route"></i></span>
           <span class="pr-3"><%= @place.address %></span>
         </div>
       </div>
 
       <div class="memo_box">
         <div class="icon-text">
-          <span class="icon has-text-danger">
-            <i class="fas fa-file-signature"></i>
-          </span>
+          <span class="icon has-text-danger"><i class="fas fa-file-signature"></i></span>
           <span><%= simple_format(@place.memo) %></span>
         </div>
       </div>

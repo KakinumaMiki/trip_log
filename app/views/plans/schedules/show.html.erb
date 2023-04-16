@@ -6,8 +6,8 @@
 
 <ul>
   <% @schedule.ordered_places.each do |place| %>
-    <li class="ml-4">
-      <%= @schedule.start_at(place)&.strftime('%H:%M') %>
+    <li class="ml-4" style="display: flex">
+      <span style="width: 50px"><%= @schedule.start_at(place)&.strftime('%H:%M') %></span>
       <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
     </li>
   <% end %>
@@ -15,15 +15,13 @@
 
 <div class="memo_box mx-3">
   <div class="icon-text">
-          <span class="icon has-text-danger">
-            <i class="fas fa-file-signature"></i>
-          </span>
+    <span class="icon has-text-danger"><i class="fas fa-file-signature"></i></span>
     <span><%= simple_format(@schedule.memo) %></span>
   </div>
 </div>
 
 <div class="is-inline-block">
-  <%= link_to '編集', edit_plan_schedule_path(@plan, @schedule), class: 'button is-warning is-light level-item level-right' %>
+  <%= link_to "#{@schedule.name}の編集", edit_plan_schedule_path(@plan, @schedule), class: 'button is-warning is-light level-item level-right' %>
 </div>
 <div class="py-3">
   <%= link_to '戻る', plan_path(@plan), class: 'button is-info is-light' %>
