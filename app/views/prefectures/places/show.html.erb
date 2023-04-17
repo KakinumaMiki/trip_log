@@ -69,7 +69,17 @@
           <tbody>
             <% memories.order(went_on: :desc).each do |memory| %>
               <tr>
-                <td><%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory), class: "textlink circle" %></td>
+                <td>
+                  <%= link_to "#{memory.went_on}の記録", prefecture_place_memory_path(@prefecture, @place, memory), class: "textlink circle" %>
+                  <div class="sentence_line ml-5">
+                    <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
+                    <span class="pr-2"><%= memory.with_who %></span>
+                  </div>
+                  <div class="sentence_line ml-1">
+                    <span class="icon has-text-success"><i class="fas fa-star"></i></span>
+                    <span class="pr-2"><%= memory.star %></span>
+                  </div>
+                </td>
               </tr>
             <% end %>
           </tbody>
