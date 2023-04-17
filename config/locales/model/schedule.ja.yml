@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      schedule:
+        name: 区切り
+        went_on: いつ
+        memo: メモ
+        place_ids: 場所

@@ -1,0 +1,48 @@
+<%= form_with(model: [@plan, @schedule]) do |form| %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :name, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.text_field :name, placeholder: '1日目', required: true, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :went_on, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.date_field :went_on, required: true, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :memo, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <%= form.text_area :memo, class: 'textarea' %>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :place_ids, class: 'label' %>
+    </div>
+    <div class="field-body">
+      <% @places.each do |place| %>
+        <%= check_box_tag 'schedule[place_ids][]', place.id, @schedule.places.include?(place) %>
+        <span class="ml-1 mr-3"><%= place.name %></span>
+      <% end %>
+    </div>
+  </div>
+
+  <% if is_start_at %>
+    <%= render 'plans/schedules/start_at', form: form, schedule: @schedule %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: 'button is-success is-light' %>
+  </div>
+<% end %>

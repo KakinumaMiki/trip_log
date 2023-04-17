@@ -15,9 +15,7 @@
 <!--金額-->
 <div class="sentence_line">
   <div class="icon-text">
-  <span class="icon has-text-success">
-    <i class="fas fa-donate"></i>
-  </span>
+    <span class="icon has-text-success"><i class="fas fa-donate"></i></span>
     <span class="pr-2"><%= memory.price %>円</span>
   </div>
 </div>
@@ -25,24 +23,20 @@
 <!--誰と-->
 <div class="sentence_line pt-3">
   <div class="icon-text">
-  <span class="icon has-text-success">
-    <i class="fas fa-user-friends"></i>
-  </span>
+    <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
     <span class="pr-2"><%= memory.with_who %></span>
   </div>
 </div>
 
 <div class="memo_box">
   <div class="icon-text">
-          <span class="icon has-text-danger">
-            <i class="fas fa-file-signature"></i>
-          </span>
+    <span class="icon has-text-danger"><i class="fas fa-file-signature"></i></span>
     <span><%= simple_format(memory.comment) %></span>
   </div>
 </div>
 
 <hr>
-<div class="pb-4">
-  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'button is-warning is-light mr-1' %>
-  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light' } %>
+<div class="level pb-4">
+  <%= link_to '記録の編集', edit_prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), class: 'level-left button is-warning is-light mr-1' %>
+  <%= link_to '記録の削除', prefecture_place_memory_path(memory.place.prefecture, memory.place, memory), { method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'level-right button is-danger is-light' } %>
 </div>

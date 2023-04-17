@@ -1,0 +1,32 @@
+<h1 class="title">旅のプラン一覧</h1>
+
+<ul class="ml-3">
+  <% @plans.order(start_date: :asc).each do |plan| %>
+    <div class="pt-3">
+      <li style="display: flex">
+        <span style="width: 250px" class="has-text-weight-bold"><%= link_to plan.name, plan_path(plan), class: "textlink circle" %></span>
+        <span style="width: 150px">
+          <div class="sentence_line">
+            <div class="icon-text">
+              <span class="icon has-text-success"><i class="fas fa-user-friends"></i></span>
+              <span class="pr-2"><%= plan.with_who %></span>
+            </div>
+          </div>
+        </span>
+        <div class="sentence_line">
+          <div class="icon-text">
+            <span class="icon has-text-success"><i class="fas fa-calendar-alt"></i></span>
+            <span class="pr-2"><%= plan.date %></span>
+          </div>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ul>
+
+<div class="py-3">
+  <%= link_to 'プランの作成', new_plan_path, class: 'button is-success is-light' %>
+  <div class="pt-3">
+    <%= link_to '戻る', root_path, class: 'button is-info is-light' %>
+  </div>
+</div>

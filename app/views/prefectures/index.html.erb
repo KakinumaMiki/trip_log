@@ -1,5 +1,10 @@
 <h1 class="title">Trip_logs</h1>
 
+<div class="mb-3 is-size-5">
+  <span class="icon"><i class="fas fa-angle-right"></i></span>
+  <%= link_to '旅のプラン一覧', plans_path, class: "textlink fluorescent" %>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -10,7 +15,7 @@
   <tbody>
     <% @prefectures.each do |prefecture| %>
       <tr>
-        <td><%= link_to prefecture.name, prefecture_places_path(prefecture), class:"button is-small" %></td>
+        <td><%= link_to prefecture.name, prefecture_places_path(prefecture), class: "button is-small" %></td>
       </tr>
     <% end %>
   </tbody>

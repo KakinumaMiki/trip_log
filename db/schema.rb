@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_094535) do
+ActiveRecord::Schema.define(version: 2023_04_04_111839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2022_10_17_094535) do
     t.index ["place_id"], name: "index_memories_on_place_id"
   end
 
+  create_table "place_schedules", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.bigint "schedule_id", null: false
+    t.time "start_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_place_schedules_on_place_id"
+    t.index ["schedule_id"], name: "index_place_schedules_on_schedule_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
     t.bigint "category_id", null: false
@@ -47,13 +57,36 @@ ActiveRecord::Schema.define(version: 2022_10_17_094535) do
     t.index ["prefecture_id"], name: "index_places_on_prefecture_id"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.string "with_who"
+    t.text "memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "plan_id", null: false
+    t.string "name", null: false
+    t.text "memo"
+    t.date "went_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["plan_id"], name: "index_schedules_on_plan_id"
+  end
+
   add_foreign_key "memories", "places"
+  add_foreign_key "place_schedules", "places"
+  add_foreign_key "place_schedules", "schedules"
   add_foreign_key "places", "categories"
   add_foreign_key "places", "prefectures"
+  add_foreign_key "schedules", "plans"
 end
