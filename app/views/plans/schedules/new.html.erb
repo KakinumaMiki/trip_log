@@ -7,7 +7,7 @@
 
 <div class="ml-5 my-3">
   <% @plan.schedules.order(:id).each do |schedule| %>
-    <div class="sentence_line">
+    <div class="sentence_line mr-4">
       <%= schedule.name %>
     </div>
   <% end %>
