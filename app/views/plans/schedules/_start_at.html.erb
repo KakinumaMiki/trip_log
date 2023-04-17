@@ -1,0 +1,16 @@
+<hr>
+<%= form.fields_for :place_schedules, @schedule.place_schedules.order(:start_at) do |place_schedule| %>
+  <div class="field is-horizontal">
+    <% place = place_schedule.object.place %>
+    <div class="field-label is-normal has-text-weight-semibold">
+      <%= place_schedule.label :place do %>
+        <%= place.name %>
+      <% end %>
+    </div>
+    <%= place_schedule.hidden_field :place_id, value: place.id %>
+
+    <div class="field-body">
+      <%= place_schedule.time_field :start_at, class: 'input' %>
+    </div>
+  </div>
+<% end %>

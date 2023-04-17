@@ -1,0 +1,21 @@
+<h1 class="title">日毎の作成</h1>
+
+<div class="category_line">
+  <%= @plan.name %>
+</div>
+<div class="date_line ml-5"><%= @plan.date %></div>
+
+<div class="ml-5 my-3">
+  <% @plan.schedules.order(:id).each do |schedule| %>
+    <div class="sentence_line">
+      <%= schedule.name %>
+    </div>
+  <% end %>
+</div>
+<hr>
+
+<%= render 'form', is_start_at: false %>
+
+<div class="py-3">
+  <%= link_to '戻る', plan_path(@plan), class: 'button is-info is-light' %>
+</div>
