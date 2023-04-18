@@ -1,7 +1,7 @@
 class Plans::SchedulesController < ApplicationController
   before_action :set_place, only: [:new, :edit]
   before_action :set_plan
-  before_action :set_schedule, only: [:show, :edit, :update]
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -33,6 +33,14 @@ class Plans::SchedulesController < ApplicationController
       redirect_to plan_schedule_path(@plan, @schedule), notice: 'スケジュールを更新しました。'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @schedule.destroy
+      redirect_to plan_path(@plan), flash: { warning: '削除しました。' }
+    else
+      redirect_to plan_schedule_path(@plan, @schedule), alert: '削除できませんでした。'
     end
   end
 

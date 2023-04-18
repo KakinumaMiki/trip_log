@@ -11,8 +11,9 @@
   </div>
 </div>
 
+<div>
 <% @plan.schedules.order(:id).each do |schedule| %>
-  <div class="category_line level-left pl-2 m-3">
+  <div class="category_line level-left px-2 m-3">
     <%= link_to schedule.name, plan_schedule_path(@plan, schedule), class: 'textlink' %>
   </div>
   <ul>
@@ -24,6 +25,7 @@
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <div class="memo_box mx-3">
   <div class="icon-text">
@@ -32,7 +34,7 @@
   </div>
 </div>
 
-<div class="level mt-5 mb-3">
+<div class="level mt-5 mb-3 is-mobile">
   <div class="level-left">
     <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
     <%= link_to '日毎の作成', new_plan_schedule_path(@plan), class: 'button is-success is-light level-item' %>

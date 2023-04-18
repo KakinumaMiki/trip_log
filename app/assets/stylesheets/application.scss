@@ -42,3 +42,9 @@ h2 {
 h2:before {
   margin-right: 8px;
 }
+
+.plan-list {
+  flex-basis: 0;
+  flex-grow: 5;
+  flex-shrink: 1;
+}
