@@ -24,7 +24,7 @@
     </div>
     <div class="field-body">
       <span class="select is-fullwidth">
-        <%= form.select :gone, [['行ってみたい', 0], ['行った', 1]], { include_blank: false, selected: 0 }, class: 'select' %>
+        <%= form.select :gone, [['行ってみたい', false], ['行った', true]], { include_blank: false }, { class: 'form-control' } %>
       </span>
     </div>
   </div>
@@ -44,7 +44,7 @@
     </div>
     <div class="field-body">
       <span class="select is-fullwidth">
-        <%= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false, selected: 1 }, { class: 'form-control' } %>
+        <%= form.select :category_id, [['温泉', 1], ['旅館・ホテル', 2], ['飲食店', 3], ['その他', 4]], { include_blank: false }, { class: 'form-control' } %>
       </span>
     </div>
   </div>

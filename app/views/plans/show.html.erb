@@ -11,19 +11,21 @@
   </div>
 </div>
 
-<% @plan.schedules.order(:id).each do |schedule| %>
-  <div class="category_line level-left pl-2 m-3">
-    <%= link_to schedule.name, plan_schedule_path(@plan, schedule), class: 'textlink' %>
-  </div>
-  <ul>
-    <% schedule.ordered_places.each do |place| %>
-      <li class="ml-4" style="display: flex">
-        <span style="width: 50px"><%= schedule.start_at(place)&.strftime('%H:%M') %></span>
-        <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div>
+  <% @plan.schedules.order(:id).each do |schedule| %>
+    <div class="category_line level-left px-2 m-3">
+      <%= link_to schedule.name, plan_schedule_path(@plan, schedule), class: 'textlink' %>
+    </div>
+    <ul>
+      <% schedule.ordered_places.each do |place| %>
+        <li class="ml-4" style="display: flex">
+          <span style="width: 50px"><%= schedule.start_at(place)&.strftime('%H:%M') %></span>
+          <%= link_to place.name, prefecture_place_path(place.prefecture, place), target: :_blank, rel: "noopener noreferrer", class: "textlink lineleft" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
 <div class="memo_box mx-3">
   <div class="icon-text">
@@ -32,14 +34,12 @@
   </div>
 </div>
 
-<div class="level mt-5 mb-3">
+<div class="level mt-5 mb-3 is-mobile">
   <div class="level-left">
     <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
     <%= link_to '日毎の作成', new_plan_schedule_path(@plan), class: 'button is-success is-light level-item' %>
   </div>
-  <% unless @plan.schedules.present? %>
-    <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light level-right' %>
-  <% end %>
+  <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "button is-danger is-light level-right #{'disabled' if @plan.schedules.present?}" %>
 </div>
 <div class="mb-3">
   <%= link_to '戻る', plans_path, class: 'button is-info is-light' %>

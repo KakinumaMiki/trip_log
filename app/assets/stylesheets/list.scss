@@ -1,12 +1,11 @@
-ul.sample1,
-ul.sample1 ul{
-  width:350px;
+ul.place,
+ul.place ul{
+  width:auto;
   font-weight: bold;
   counter-reset: list;
 }
-ul.sample1 ul{
+ul.place ul{
   margin: 0 0 0 40px;
-  width:310px;
 }
 .category{
   background: #f9f4ec;
@@ -15,7 +14,6 @@ ul.sample1 ul{
   padding: 3px 3px 3px 8px;
 }
 .gone{
-  //background: #fed1c3;
   display: block;
   color: #6594e0;/*文字色*/
   /*線の種類（点線）2px 線色*/
@@ -24,7 +22,7 @@ ul.sample1 ul{
   font-size: 125%;
 }
 
-.sample1 a{
+.place a{
   position: relative;
   display: block;
   text-decoration: none;
@@ -40,11 +38,11 @@ ul.sample1 ul{
   transition: all .3s ease-out;
 }
 
-.sample1 a:hover{
+.place a:hover{
   background: #ffd9d3;
 }
 
-.sample1 a:before{
+.place a:before{
   content: counter(list);
   counter-increment: list;
   position: absolute;
@@ -60,7 +58,7 @@ ul.sample1 ul{
   color: #fff;
 }
 
-.sample1 a:after{
+.place a:after{
   content: '';
   position: absolute;
   left: -28px;
@@ -74,7 +72,7 @@ ul.sample1 ul{
   transition: all .3s ease-out;
 }
 
-.sample1 a:hover:after{
+.place a:hover:after{
   left: -6px;
   border-left-color: #5c9ee7;
 }
