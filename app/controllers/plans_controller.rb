@@ -22,6 +22,7 @@ class PlansController < ApplicationController
 
   # POST /plans or /plans.json
   def create
+    return redirect_to new_plan_path, alert: '日時を確認してください' if plan_params[:start_date] > plan_params[:end_date]
     @plan = Plan.new(plan_params)
 
     if @plan.save
@@ -33,6 +34,7 @@ class PlansController < ApplicationController
 
   # PATCH/PUT /plans/1 or /plans/1.json
   def update
+    return redirect_to edit_plan_path(@plan), alert: '日時を確認してください' if plan_params[:start_date] > plan_params[:end_date]
     if @plan.update(plan_params)
       redirect_to plan_url(@plan), notice: '更新されました。'
     else
