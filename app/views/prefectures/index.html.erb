@@ -1,9 +1,24 @@
 <h1 class="title">Trip_logs</h1>
-
+<%= javascript_pack_tag 'home/jmap' %>
 <div class="mb-3 is-size-5">
   <span class="icon"><i class="fas fa-angle-right"></i></span>
   <%= link_to '旅のプラン一覧', plans_path, class: "textlink fluorescent" %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#jmap').jmap({
+        onSelect: function(e, data) {
+            $('#prefectureModal').find('#prefectureModalTitle')
+            .html(data.area8.name + " - " + data.area11.name + " - " + data.name + data.full)
+            .end().find('.modal-body')
+            .html(JSON.stringify(data, null, 4))
+            .end().modal('show');
+        }
+      });
+  });
+  
+</script>
 
 <table>
   <thead>
@@ -13,6 +28,8 @@
   </thead>
 
   <tbody>
+    <div id="jmap">hoge</div>
+    
     <% @prefectures.each do |prefecture| %>
       <tr>
         <td><%= link_to prefecture.name, prefecture_places_path(prefecture), class: "button is-small" %></td>

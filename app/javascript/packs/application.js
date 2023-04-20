@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import jQuery from "jquery"
 
 // font awesomeの追加
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -16,3 +17,4 @@ import '@fortawesome/fontawesome-free/js/regular';
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
