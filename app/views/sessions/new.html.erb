@@ -1,0 +1,24 @@
+<h1>ログイン</h1>
+
+<%#= form_with model: @session, local: true do |form| %>
+  <%#= form.label :code, 'コード' %>
+  <%#= form.text_field :code %>
+
+  <%#= form.label :password, 'パスワード' %>
+  <%#= form.password_field :password %>
+
+  <%#= form.submit 'ログイン' %>
+<%# end %>
+
+
+------
+
+<%= form_with model: @session do |form| %>
+  <%= form.label :code, 'コード' %>
+  <%= form.text_field :code %>
+
+  <%= form.label :password, 'パスワード' %>
+  <%= form.password_field :password %>
+
+  <%= form.submit 'ログイン' %>
+<% end %>

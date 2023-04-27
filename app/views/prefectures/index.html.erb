@@ -1,5 +1,8 @@
 <h1 class="title">Trip_logs</h1>
-
+<p><%= link_to 'ログアウト', logout_path, method: :delete %></p>
+<% if admin? %>
+  admintest
+<% end %>
 <div class="mb-3 is-size-5">
   <span class="icon"><i class="fas fa-angle-right"></i></span>
   <%= link_to '旅のプラン一覧', plans_path, class: "textlink fluorescent" %>
