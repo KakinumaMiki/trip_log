@@ -1,7 +1,7 @@
 <h1 class="title">Trip_logs</h1>
 <%= javascript_pack_tag 'home/jmap' %>
 
-<div class="mb-3 is-size-5">
+<div class="is-size-5">
   <span class="icon"><i class="fas fa-angle-right"></i></span>
   <%= link_to '旅のプラン一覧', plans_path, class: "textlink fluorescent" %>
 </div>
@@ -9,16 +9,11 @@
   $(document).ready(function() {
     $('#jmap').jmap({
       width: '100%',
-      height: '650px',
-      backgroundPadding: '3rem',
-      // backgroundColor: '#ff000000',
+      height: '620px',
+      backgroundPadding: '2rem',
       prefectureClass: 'prefecture',
-      // prefectureLineColor: '#ffffff',
-      // prefectureLineWidth: 1,
       prefectureLineHoverColor : '#fff',
-      // fontSize: '0.8rem',
       fontColor: '#000',
-      // font: 'serif',
       areas: [
         {code : 1, name: "北海道", color: "#7f7eda", hoverColor: "#b3b2ee" },
         {code : 2, name: "青森", color: "#759ef4", hoverColor: "#98b9ff" },
@@ -89,10 +84,5 @@
 
   <tbody>
     <div id="jmap"></div>
-    <% @prefectures.each do |prefecture| %>
-      <tr>
-        <td><%= link_to prefecture.name, prefecture_places_path(prefecture), class: "button is-small" %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
