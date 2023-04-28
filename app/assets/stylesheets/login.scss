@@ -1,40 +1,22 @@
-/*variables*/
-//$loginfonts: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif;
-
-//colors
-$buttoncolor: #16a085;
-$buttonhover: rgba(26, 188, 156, 1);
-
-/*general style*/
-
-/*google font*/
-@import "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700)";
-
-
-
 /*Login form style*/
 /* === Form === */
 .form {
   width: 100%;
   .field {
-    position: relative;
     margin: 0 50px;
   }
 }
 
 /* === Login styles === */
 .login {
-  position: relative;
   margin: 100px auto;
   width: 70%;
-  //background: #f5f5ff;
-  //border-radius: 3px;
   box-shadow: 2px 2px 4px;
   p {
     line-height: 55px;
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: white;
     text-align: center;
     background: #6b5be6;
   }
@@ -44,53 +26,19 @@ $buttonhover: rgba(26, 188, 156, 1);
 /* === Input Form === */
 .login_button {
   margin-top: 15px;
-  width: 270px;
-  text-align: center;
+  margin-bottom: 20px;
+  width: 45%;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   padding: 12px 0;
 
-  color: #fff;
-  background-color: $buttoncolor;
-  text-shadow: none;
-  text-transform: uppercase;
+  color: white;
+  background-color: #3dabb8;
   border: none;
   cursor: pointer;
-  position: relative;
-  margin-bottom: 20px;
-  -webkit-animation: shadowFadeOut 0.4s;
-  -moz-animation: shadowFadeOut 0.4s;
 }
 
-.login_button:hover,
-.login_button:focus {
-  color: #fff;
-  box-shadow: inset 0px 46px 0px 0px $buttonhover;
-  -webkit-animation: shadowFade 0.4s;
-  -moz-animation: shadowFade 0.4s;
-}
-
-/*keyframes for input animation*/
-
-@keyframes shadowFade {
-  0% {
-    box-shadow: inset 0px 0px 0px 0px $buttonhover;
-    color: #fff;
-  }
-  100% {
-    box-shadow: inset 0px 46px 0px 0px $buttonhover;
-    color: #fff;
-  }
-}
-
-@keyframes shadowFadeOut {
-  0% {
-    box-shadow: inset 0px 46px 0px 0px $buttonhover;
-    color: #fff;
-  }
-  100% {
-    box-shadow: inset 0px 0px 0px 0px $buttonhover;
-    color: #fff;
-  }
+.login_button:hover {
+  color: white;
+  background: #add8e6;
 }
