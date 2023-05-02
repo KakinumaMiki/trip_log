@@ -1,4 +1,4 @@
-class Prefectures::Places::MemoriesController < ApplicationController
+class Prefectures::Places::MemoriesController < BaseController
   before_action :set_prefecture
   before_action :set_place
   before_action :set_memory, only: [:show, :edit, :update, :destroy]

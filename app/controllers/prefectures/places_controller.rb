@@ -1,4 +1,4 @@
-class Prefectures::PlacesController < ApplicationController
+class Prefectures::PlacesController < BaseController
   before_action :set_prefecture
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
@@ -18,6 +18,8 @@ class Prefectures::PlacesController < ApplicationController
 
   def create
     @place = @prefecture.places.build(place_params)
+    @place.creator = current_user.code
+    @place.status = !admin?
 
     if @place.save
       redirect_to prefecture_places_path(@prefecture), notice: '新規作成されました。'

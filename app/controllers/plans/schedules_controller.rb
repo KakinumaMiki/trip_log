@@ -1,4 +1,4 @@
-class Plans::SchedulesController < ApplicationController
+class Plans::SchedulesController < BaseController
   before_action :set_place, only: [:new, :edit]
   before_action :set_plan
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]

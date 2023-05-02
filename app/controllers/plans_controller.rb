@@ -1,4 +1,4 @@
-class PlansController < ApplicationController
+class PlansController < BaseController
   before_action :set_plan, only: %i[ show edit update destroy ]
 
   # GET /plans or /plans.json
