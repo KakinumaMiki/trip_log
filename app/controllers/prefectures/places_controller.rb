@@ -4,6 +4,8 @@ class Prefectures::PlacesController < BaseController
 
   def index
     @places = @prefecture.places
+    @user_places = @places.user_places(current_user)
+    @other_places = @places.other_places(current_user)
   end
 
   def show
@@ -18,7 +20,7 @@ class Prefectures::PlacesController < BaseController
 
   def create
     @place = @prefecture.places.build(place_params)
-    @place.creator = current_user.code
+    @place.user = current_user
     @place.status = !admin?
 
     if @place.save

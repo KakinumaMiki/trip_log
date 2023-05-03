@@ -53,10 +53,11 @@ ActiveRecord::Schema.define(version: 2023_04_29_025333) do
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "creator"
+    t.bigint "user_id"
     t.boolean "status"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["prefecture_id"], name: "index_places_on_prefecture_id"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "plans", force: :cascade do |t|
