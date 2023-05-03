@@ -4,6 +4,8 @@ class PlansController < BaseController
   # GET /plans or /plans.json
   def index
     @plans = Plan.all
+    @user_plans = @plans.user_plans(current_user)
+    @other_plans = @plans.other_plans(current_user)
   end
 
   # GET /plans/1 or /plans/1.json
@@ -24,6 +26,8 @@ class PlansController < BaseController
   def create
     return redirect_to new_plan_path, alert: '日時を確認してください' if plan_params[:start_date] > plan_params[:end_date]
     @plan = Plan.new(plan_params)
+    @plan.user = current_user
+    @plan.status = !admin?
 
     if @plan.save
       redirect_to plan_url(@plan), notice: 'プランが作成されました。'

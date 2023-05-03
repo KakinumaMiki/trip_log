@@ -19,6 +19,8 @@
 <%= render 'list', places: gone_places, prefecture: @prefecture, title: '行ったところ' %>
 <%= render 'list', places: not_gone_places, prefecture: @prefecture, title: '行ってみたいところ' %>
 <% if @other_places.present? %>
-  <hr>
+  <div class="py-5">
+    <hr>
+  </div>
   <%= render 'list', places: @other_places, prefecture: @prefecture, title: '他の人が行ったところ' %>
 <% end %>
