@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 
   resources :prefectures, only: [:index] do
     scope module: :prefectures do
-      resources :places do
+      resources :places, param: :place_id
+      resources :places, only: [] do
         scope module: :places do
-          resources :memories
+          resources :memories, except: [:index]
         end
       end
     end
   end
-  resources :plans do
+  resources :plans, param: :plan_id
+  resources :plans, only: [] do
     scope module: :plans do
       resources :schedules, except: [:index]
     end

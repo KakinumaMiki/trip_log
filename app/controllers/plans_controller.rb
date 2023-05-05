@@ -59,7 +59,7 @@ class PlansController < BaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_plan
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:plan_id])
   end
 
   # Only allow a list of trusted parameters through.

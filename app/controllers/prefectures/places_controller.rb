@@ -54,7 +54,7 @@ class Prefectures::PlacesController < BaseController
   end
 
   def set_place
-    @place = @prefecture.places.find(params[:id])
+    @place = @prefecture.places.find(params[:place_id])
   end
 
   # Only allow a list of trusted parameters through.

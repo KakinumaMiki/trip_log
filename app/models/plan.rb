@@ -19,4 +19,8 @@ class Plan < ApplicationRecord
       end
     end
   end
+
+  def open?
+    status
+  end
 end
