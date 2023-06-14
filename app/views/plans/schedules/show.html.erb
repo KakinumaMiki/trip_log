@@ -20,12 +20,15 @@
   </div>
 </div>
 
-<div class="level mt-5 mb-3 is-mobile">
-  <div class="level-left">
-    <%= link_to "#{@schedule.name}の編集", edit_plan_schedule_path(@plan, @schedule), class: 'button is-warning is-light level-item' %>
+<% if @plan.user == current_user %>
+  <div class="level mt-5 mb-3 is-mobile">
+    <div class="level-left">
+      <%= link_to "#{@schedule.name}の編集", edit_plan_schedule_path(@plan, @schedule), class: 'button is-warning is-light level-item' %>
+    </div>
+    <%= link_to '削除', plan_schedule_path(@plan, @schedule), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light level-right' %>
   </div>
-  <%= link_to '削除', plan_schedule_path(@plan, @schedule), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'button is-danger is-light level-right' %>
-</div>
+<% end %>
+
 <div class="py-3">
   <%= link_to '戻る', plan_path(@plan), class: 'button is-info is-light' %>
 </div>

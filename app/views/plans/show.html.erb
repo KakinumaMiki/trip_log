@@ -34,13 +34,16 @@
   </div>
 </div>
 
-<div class="level mt-5 mb-3 is-mobile">
-  <div class="level-left">
-    <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
-    <%= link_to '日毎の作成', new_plan_schedule_path(@plan), class: 'button is-success is-light level-item' %>
+<% if @plan.user == current_user %>
+  <div class="level mt-5 mb-3 is-mobile">
+    <div class="level-left">
+      <%= link_to 'プランの編集', edit_plan_path(@plan), class: 'button is-warning is-light level-item' %>
+      <%= link_to '日毎の作成', new_plan_schedule_path(@plan), class: 'button is-success is-light level-item' %>
+    </div>
+    <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "button is-danger is-light level-right #{'disabled' if @plan.schedules.present?}" %>
   </div>
-  <%= link_to 'プランの削除', plan_path(@plan), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "button is-danger is-light level-right #{'disabled' if @plan.schedules.present?}" %>
-</div>
+<% end %>
+
 <div class="mb-3">
   <%= link_to '戻る', plans_path, class: 'button is-info is-light' %>
 </div>
