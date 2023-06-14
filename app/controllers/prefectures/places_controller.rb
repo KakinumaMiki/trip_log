@@ -1,9 +1,11 @@
-class Prefectures::PlacesController < ApplicationController
+class Prefectures::PlacesController < BaseController
   before_action :set_prefecture
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
     @places = @prefecture.places
+    @user_places = @places.user_places(current_user)
+    @other_places = @places.other_places(current_user)
   end
 
   def show
@@ -18,6 +20,8 @@ class Prefectures::PlacesController < ApplicationController
 
   def create
     @place = @prefecture.places.build(place_params)
+    @place.user = current_user
+    @place.status = !admin?
 
     if @place.save
       redirect_to prefecture_places_path(@prefecture), notice: '新規作成されました。'
@@ -50,7 +54,7 @@ class Prefectures::PlacesController < ApplicationController
   end
 
   def set_place
-    @place = @prefecture.places.find(params[:id])
+    @place = @prefecture.places.find(params[:place_id])
   end
 
   # Only allow a list of trusted parameters through.

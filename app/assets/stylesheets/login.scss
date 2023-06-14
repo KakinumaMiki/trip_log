@@ -1,0 +1,44 @@
+/*Login form style*/
+/* === Form === */
+.form {
+  width: 100%;
+  .field {
+    margin: 0 50px;
+  }
+}
+
+/* === Login styles === */
+.login {
+  margin: 100px auto;
+  width: 70%;
+  box-shadow: 2px 2px 4px;
+  p {
+    line-height: 55px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background: #6b5be6;
+  }
+}
+
+/*input style*/
+/* === Input Form === */
+.login_button {
+  margin-top: 15px;
+  margin-bottom: 35px;
+  width: 45%;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 0;
+
+  color: white;
+  background-color: #3dabb8;
+  border: none;
+  cursor: pointer;
+}
+
+.login_button:hover {
+  color: white;
+  background: #add8e6;
+}

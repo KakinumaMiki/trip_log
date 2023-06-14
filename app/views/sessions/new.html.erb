@@ -1,0 +1,31 @@
+<div class="login">
+  <p>WELCOME!</p>
+  <%= form_with model: @session, class: 'form' do |form| %>
+    <div class="field has-addons my-5">
+      <div class="control">
+        <%= form.label :code, class: 'button is-static' %>
+      </div>
+      <div class="control has-icons-left is-expanded">
+        <%= form.text_field :code, class: 'input' %>
+        <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+      </div>
+    </div>
+
+    <div class="field has-addons mb-5">
+      <div class="control">
+        <%= form.label :password, class: 'button is-static' %>
+      </div>
+      <div class="control has-icons-left is-expanded">
+        <%= form.password_field :password, class: 'input' %>
+        <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+      </div>
+    </div>
+    <div class="has-text-centered">
+      <%= form.submit 'ログイン', class: 'login_button' %>
+    </div>
+  <% end %>
+</div>

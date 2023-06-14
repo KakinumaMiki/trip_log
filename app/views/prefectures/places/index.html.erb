@@ -2,13 +2,13 @@
 
 <div class="pb-4">
   <%= link_to '場所の追加', new_prefecture_place_path(@prefecture), class: 'button is-success is-light mr-1' %>
-  <%= link_to '戻る', root_path, class: 'button is-info is-light', data: {"turbolinks" => false} %>
+  <%= link_to '戻る', prefectures_path, class: 'button is-info is-light', data: {"turbolinks" => false} %>
 </div>
 
 <% gone_places = [] %>
 <% not_gone_places = [] %>
 
-<% @places.order(:id).each do |place| %>
+<% @user_places.order(:id).each do |place| %>
   <% if place.gone? %>
     <% gone_places << place %>
   <% else %>
@@ -18,3 +18,9 @@
 
 <%= render 'list', places: gone_places, prefecture: @prefecture, title: '行ったところ' %>
 <%= render 'list', places: not_gone_places, prefecture: @prefecture, title: '行ってみたいところ' %>
+<% if @other_places.present? %>
+  <div class="py-5">
+    <hr>
+  </div>
+  <%= render 'list', places: @other_places, prefecture: @prefecture, title: '他の人が行ったところ' %>
+<% end %>

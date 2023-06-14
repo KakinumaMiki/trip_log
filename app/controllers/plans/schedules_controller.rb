@@ -1,5 +1,5 @@
-class Plans::SchedulesController < ApplicationController
-  before_action :set_place, only: [:new, :edit]
+class Plans::SchedulesController < BaseController
+  before_action :set_places, only: [:new, :edit]
   before_action :set_plan
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
@@ -13,12 +13,6 @@ class Plans::SchedulesController < ApplicationController
   def create
     @schedule = @plan.schedules.build(schedule_params)
     if @schedule.save
-      # ユーザーが選択した場所を取得
-      places = Place.where(id: params[:place_ids])
-      # 選択された場所とscheduleテーブルに保存されたidをplace_schedulesテーブルに保存
-      places.each do |place|
-        @schedule.places << place
-      end
       redirect_to plan_path(@plan), notice: '新規作成されました。'
     else
       render :new
@@ -29,6 +23,13 @@ class Plans::SchedulesController < ApplicationController
   end
 
   def update
+    # エラーにはなるけど削除する
+    if params[:schedule][:place_ids]
+      existing_place_ids = params[:schedule][:place_ids].map(&:to_i)
+      deleted_place_ids = @schedule.place_ids - existing_place_ids
+      @schedule.place_schedules.where(place_id: deleted_place_ids).destroy_all
+    end
+
     if @schedule.update(schedule_params)
       redirect_to plan_schedule_path(@plan, @schedule), notice: 'スケジュールを更新しました。'
     else
@@ -37,6 +38,7 @@ class Plans::SchedulesController < ApplicationController
   end
 
   def destroy
+    @schedule.place_schedules.destroy_all
     if @schedule.destroy
       redirect_to plan_path(@plan), flash: { warning: '削除しました。' }
     else
@@ -46,8 +48,8 @@ class Plans::SchedulesController < ApplicationController
 
   private
 
-  def set_place
-    @places = Place.all
+  def set_places
+    @places = Place.user_places(current_user).all
   end
 
   def set_plan
@@ -59,6 +61,7 @@ class Plans::SchedulesController < ApplicationController
   end
 
   def schedule_params
+    # ここのplace_schedules_attributesで:idとか色々使っているから、削除することができない。。
     params.require(:schedule).permit(:name, :went_on, :memo, place_ids: [],
                                      place_schedules_attributes: [:id, :start_at, :place_id, :_destroy])
   end
