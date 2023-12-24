@@ -12,7 +12,7 @@
 </div>
 
 <div>
-  <% @plan.schedules.order(:id).each do |schedule| %>
+  <% @plan.schedules.order(:went_on).each do |schedule| %>
     <div class="category_line level-left px-2 m-3">
       <%= link_to schedule.name, plan_schedule_path(@plan, schedule), class: 'textlink' %>
     </div>

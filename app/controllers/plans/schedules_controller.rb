@@ -23,14 +23,40 @@ class Plans::SchedulesController < BaseController
   end
 
   def update
-    # エラーにはなるけど削除する
-    if params[:schedule][:place_ids]
-      existing_place_ids = params[:schedule][:place_ids].map(&:to_i)
-      deleted_place_ids = @schedule.place_ids - existing_place_ids
-      @schedule.place_schedules.where(place_id: deleted_place_ids).destroy_all
+    @schedule = Schedule.find(params[:id])
+
+    # パラメータからplace_schedules_attributesを取得
+    place_schedules_attributes = params[:schedule][:place_schedules_attributes]
+
+    # 削除対象のキーを格納する配列
+    keys_to_delete = []
+
+    place_schedules_attributes.each do |key, attributes|
+      # この if の塊は、消したいplace_idを入れている
+      if params[:schedule][:place_ids]
+        existing_place_ids = params[:schedule][:place_ids].map(&:to_i)
+        deleted_place_ids = @schedule.place_ids - existing_place_ids
+      else
+        deleted_place_ids = @schedule.place_ids
+      end
+      deleted_place_ids = deleted_place_ids.map(&:to_s)
+
+      deleted_place_ids.each do |deleted_place_id|
+        # 消したいplace_id と、取得しているattributeのplace_idが一致したらそのkeyを取得しておく
+        if attributes["place_id"] == deleted_place_id
+          keys_to_delete << key
+        end
+      end
     end
 
-    if @schedule.update(schedule_params)
+    # 削除対象のキーをもとにパラメーターからデータを削除
+    keys_to_delete.each do |key|
+      place_schedules_attributes.delete(key)
+    end
+    # schedule_params メソッドを呼び出して、更新に使用するパラメーターを取得
+    updated_params = schedule_params
+
+    if @schedule.update(updated_params)
       redirect_to plan_schedule_path(@plan, @schedule), notice: 'スケジュールを更新しました。'
     else
       render :edit
