@@ -31,7 +31,7 @@
       <%= form.label :place_ids, class: 'label' %>
     </div>
     <div class="plan-list">
-      <% @places.each do |place| %>
+      <% @places.order(:prefecture_id).each do |place| %>
         <%= check_box_tag 'schedule[place_ids][]', place.id, @schedule.places.include?(place) %>
         <span class="ml-1 mr-3"><%= place.name %></span>
       <% end %>
