@@ -6,7 +6,7 @@
 <div class="date_line ml-5"><%= @plan.date %></div>
 
 <div class="ml-5 my-3">
-  <% @plan.schedules.order(:id).each do |schedule| %>
+  <% @plan.schedules.order(:went_on).each do |schedule| %>
     <div class="sentence_line mr-4">
       <%= schedule.name %>
     </div>
